@@ -1,0 +1,11 @@
+food_id,food_name,category,calories,protein,g_carbs,fat,fiber,suitable_for
+1,Roti (whole wheat),Main,120,3,25,1,4,"all"
+2,Rice (boiled),Main,130,2,28,0,1,"all"
+3,Paneer curry,Side,220,12,8,16,1,"vegetarian,diabetic"
+4,Chicken curry,Side,250,20,6,15,1,"non_vegetarian"
+5,Dal (lentils),Side,150,9,18,4,5,"all,diabetic"
+6,Vegetable salad,Side,80,2,12,2,3,"all,diabetic"
+7,Fish fry,Side,200,22,5,10,0,"non_vegetarian"
+8,Milk (1 cup),Drink,100,6,10,4,0,"all,diabetic"
+9,Fruit salad,Snack,110,2,20,1,3,"all"
+10,Idli (2 pcs),Breakfast,150,4,30,2,1,"all,diabetic"

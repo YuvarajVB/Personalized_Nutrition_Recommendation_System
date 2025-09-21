@@ -1,0 +1,4 @@
+user_id,report_type,fasting_blood_sugar,postprandial_sugar,hba1c
+1,diabetes,130,180,7.2
+2,diabetes,160,220,8.5
+3,normal,90,110,5.4

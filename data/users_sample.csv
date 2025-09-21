@@ -1,0 +1,5 @@
+user_id,name,age,gender,height_cm,weight_kg,activity_level,goal
+1,Amit,25,M,175,70,moderate,maintain
+2,Neha,30,F,162,55,light,weight_loss
+3,Raj,40,M,169,80,sedentary,weight_loss
+4,Pooja,35,F,158,65,active,weight_gain
