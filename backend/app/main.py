@@ -1,13 +1,26 @@
 # backend/app/main.py
+import sys
+from pathlib import Path
+
+# ---------------------------
+# Add project root to Python path
+# ---------------------------
+project_root = Path(__file__).resolve().parents[2]  # go up 2 levels to MINI PROJECT
+sys.path.append(str(project_root))
+
+# ---------------------------
+# Imports
+# ---------------------------
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Optional
-from pathlib import Path
 import uvicorn
 
-# ensure project root is in path when running uvicorn from project root
-from src.recommendation import generate_meal_plan_by_user_id
+from src.recommendation import generate_meal_plan_by_user_id  # now works
 
+# ---------------------------
+# FastAPI app
+# ---------------------------
 app = FastAPI(title="Diet Recommender API", version="0.2")
 
 class UserIdRequest(BaseModel):
@@ -28,6 +41,8 @@ async def generate_plan(req: UserIdRequest):
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
-# If running this file directly (for dev)
+# ---------------------------
+# Run app directly
+# ---------------------------
 if __name__ == "__main__":
     uvicorn.run("backend.app.main:app", host="127.0.0.1", port=8000, reload=True)
