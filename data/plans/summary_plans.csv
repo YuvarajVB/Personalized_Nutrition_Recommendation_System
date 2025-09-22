@@ -1,0 +1,5 @@
+user_id,name,total_calories,target_calories,clinical_status
+1,Amit,2500,2594,diabetes
+2,Neha,1231,1221,diabetes
+3,Raj,1510,1494,normal
+4,Pooja,2630,2745,
