@@ -1,20 +1,31 @@
+# src/clinical_parser.py
 import pandas as pd
+def analyze_report(report):
+    """
+    Analyze a clinical report and return patient's status.
+    Supports diabetes (sugar patients) or normal.
+    """
+    # Normalize the report_type (handle sugar as diabetes)
+    report_type = str(report["report_type"]).strip().lower()
+    if report_type == "sugar":
+        report_type = "diabetes"
 
-def parse_diabetes_report(report_row):
-    """Takes one user's clinical report row and returns a status."""
-    fasting = report_row['fasting_blood_sugar']
-    postprandial = report_row['postprandial_sugar']
-    hba1c = report_row['hba1c']
+    if report_type == "diabetes":
+        fasting = report["fasting_blood_sugar"]
+        pp = report["postprandial_sugar"]
+        hba1c = report["hba1c"]
 
-    status = "normal"
-    if fasting >= 126 or postprandial >= 200 or hba1c >= 6.5:
-        status = "diabetes"
-    elif fasting >= 100 and fasting < 126:
-        status = "prediabetes"
+        if fasting >= 126 or pp >= 200 or hba1c >= 6.5:
+            return "diabetes"
+        else:
+            return "normal"
+    else:
+        return "normal"
 
-    return status
 
 if __name__ == "__main__":
+    # Example run
     reports = pd.read_csv("data/clinical_reports_sample.csv")
     for _, row in reports.iterrows():
-        print(f"User {row['user_id']} → {parse_diabetes_report(row)}")
+        status = analyze_report(row)
+        print(f"User {row['user_id']} → {status}")

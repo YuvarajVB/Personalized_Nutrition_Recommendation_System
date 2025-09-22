@@ -1,11 +1,1001 @@
 food_id,food_name,category,calories,protein,g_carbs,fat,fiber,suitable_for
-1,Roti (whole wheat),Main,120,3,25,1,4,"all"
-2,Rice (boiled),Main,130,2,28,0,1,"all"
-3,Paneer curry,Side,220,12,8,16,1,"vegetarian,diabetic"
-4,Chicken curry,Side,250,20,6,15,1,"non_vegetarian"
-5,Dal (lentils),Side,150,9,18,4,5,"all,diabetic"
-6,Vegetable salad,Side,80,2,12,2,3,"all,diabetic"
-7,Fish fry,Side,200,22,5,10,0,"non_vegetarian"
-8,Milk (1 cup),Drink,100,6,10,4,0,"all,diabetic"
-9,Fruit salad,Snack,110,2,20,1,3,"all"
-10,Idli (2 pcs),Breakfast,150,4,30,2,1,"all,diabetic"
+1,Methi paratha,Breakfast,203,12.6,19.3,9.0,0.6,all
+2,Chicken curry,Curry,217,22.3,23.2,12.1,2.1,all
+3,Aloo paratha,Breakfast,115,17.1,7.0,4.0,9.0,all
+4,Pakora,Snacks,167,18.2,20.7,7.9,9.7,vegetarian
+5,Pulao,Cereals,359,3.1,19.2,1.6,6.4,all
+6,Paneer curry,Curry,210,23.5,0.4,16.7,4.9,non_vegetarian
+7,Curd,Dairy,461,26.0,54.0,11.8,6.1,vegetarian
+8,Chicken curry,Curry,119,16.8,20.0,5.7,1.9,all
+9,Methi paratha,Breakfast,454,10.0,5.6,7.6,5.7,vegetarian
+10,Roti,Cereals,338,28.7,7.9,16.1,2.3,all
+11,Idli,Breakfast,138,12.0,25.3,14.5,4.5,non_vegetarian
+12,Kheer,Dessert,62,26.9,55.1,15.3,7.3,non_vegetarian
+13,Curd,Dairy,106,4.8,47.5,18.5,9.3,vegetarian
+14,Pakora,Snacks,372,1.0,20.7,19.8,7.0,vegetarian
+15,Paneer curry,Curry,296,14.5,52.3,13.7,5.7,all
+16,Roti,Cereals,258,23.0,50.5,11.3,8.5,vegetarian
+17,Idli,Breakfast,442,18.5,47.2,3.8,8.2,vegetarian
+18,Pav Bhaji,Snacks,345,15.2,47.6,4.3,4.3,vegetarian
+19,Chapati,Cereals,53,12.9,9.1,12.7,5.4,all
+20,Fruit salad,Fruit,348,6.6,54.2,8.5,7.5,all
+21,Poha,Breakfast,304,16.7,57.5,11.9,1.3,vegetarian
+22,Halwa,Dessert,459,23.3,32.7,15.9,7.3,non_vegetarian
+23,Idli,Breakfast,438,26.4,2.8,9.9,7.6,non_vegetarian
+24,Lassi,Dairy,213,0.7,2.0,19.0,1.9,all
+25,Oats porridge,Breakfast,444,15.7,23.6,9.6,8.1,all
+26,Samosa,Snacks,490,27.8,18.4,11.2,2.8,vegetarian
+27,Rajma,Curry,320,8.9,7.4,16.8,5.0,all
+28,Samosa,Snacks,375,1.0,59.9,3.5,3.5,vegetarian
+29,Pav Bhaji,Snacks,73,6.8,37.7,2.6,5.4,all
+30,Chole,Curry,283,23.5,58.4,9.4,5.6,vegetarian
+31,Dosa,Breakfast,497,17.4,48.8,17.2,4.9,non_vegetarian
+32,Chole,Curry,318,1.0,51.8,17.8,6.9,non_vegetarian
+33,Chicken curry,Curry,54,1.2,48.1,19.2,9.3,vegetarian
+34,Rajma,Curry,278,29.4,1.7,0.4,6.1,vegetarian
+35,Dal,Curry,241,14.2,30.4,18.9,5.0,vegetarian
+36,Pakora,Snacks,288,4.3,57.8,13.0,6.3,vegetarian
+37,Dosa,Breakfast,480,12.4,36.7,15.6,2.9,non_vegetarian
+38,Paneer curry,Curry,264,15.5,34.6,9.0,8.5,all
+39,Dosa,Breakfast,444,15.2,15.6,2.8,8.7,vegetarian
+40,Rajma,Curry,276,23.7,31.6,6.3,9.9,all
+41,Idli,Breakfast,344,6.0,34.7,19.0,3.3,all
+42,Kheer,Dessert,282,9.8,15.3,12.0,6.2,vegetarian
+43,Paneer curry,Curry,277,27.2,44.9,0.6,2.4,non_vegetarian
+44,Pav Bhaji,Snacks,401,18.0,54.4,6.1,3.8,vegetarian
+45,Pulao,Cereals,500,17.6,59.8,13.1,5.7,all
+46,Oats porridge,Breakfast,375,4.2,10.6,4.5,0.5,non_vegetarian
+47,Poha,Breakfast,471,3.6,45.9,14.6,8.3,non_vegetarian
+48,Roti,Cereals,473,27.2,18.9,16.6,0.3,vegetarian
+49,Pakora,Snacks,427,29.7,0.0,17.8,1.4,all
+50,Rajma,Curry,433,14.3,15.5,2.3,3.0,non_vegetarian
+51,Halwa,Dessert,141,24.5,59.0,16.1,5.7,non_vegetarian
+52,Curd,Dairy,455,2.3,31.5,6.4,5.3,all
+53,Biryani,Cereals,109,7.8,0.1,16.5,3.8,vegetarian
+54,Chole,Curry,386,4.6,9.0,18.1,6.3,all
+55,Dosa,Breakfast,393,28.3,35.0,1.1,2.9,non_vegetarian
+56,Chole,Curry,464,16.2,57.6,13.1,9.6,all
+57,Aloo paratha,Breakfast,266,4.1,20.3,7.8,9.9,non_vegetarian
+58,Sambar,Curry,261,3.4,46.7,2.0,2.4,vegetarian
+59,Kheer,Dessert,374,22.6,34.4,2.1,6.7,non_vegetarian
+60,Curd,Dairy,275,24.3,57.7,3.1,2.8,non_vegetarian
+61,Pakora,Snacks,187,25.9,0.4,17.0,3.5,all
+62,Vegetable salad,Salad,122,27.8,3.6,13.8,8.2,all
+63,Upma,Snacks,318,18.1,34.5,8.8,9.1,all
+64,Chole,Curry,57,23.6,32.7,12.6,0.0,non_vegetarian
+65,Dosa,Breakfast,88,20.9,41.7,7.9,7.8,all
+66,Oats porridge,Breakfast,260,18.6,52.8,2.8,0.4,vegetarian
+67,Vegetable salad,Salad,475,6.5,12.4,15.5,4.6,vegetarian
+68,Biryani,Cereals,73,16.0,23.1,3.6,4.8,vegetarian
+69,Rajma,Curry,315,26.3,33.1,3.1,0.2,all
+70,Sambar,Curry,431,27.2,60.0,4.7,7.1,all
+71,Buttermilk,Dairy,259,3.8,4.4,1.6,1.9,vegetarian
+72,Fruit salad,Fruit,237,2.7,43.9,3.1,8.8,vegetarian
+73,Vegetable salad,Salad,189,2.8,6.0,8.0,2.7,vegetarian
+74,Biryani,Cereals,256,21.7,48.8,8.5,4.6,vegetarian
+75,Chole,Curry,382,5.2,57.4,16.5,6.4,all
+76,Sambar,Curry,360,5.3,54.1,8.6,6.7,vegetarian
+77,Kheer,Dessert,155,21.9,3.6,11.7,2.7,vegetarian
+78,Chapati,Cereals,374,15.9,51.7,16.5,6.1,vegetarian
+79,Methi paratha,Breakfast,206,3.9,23.4,14.3,4.7,all
+80,Paneer curry,Curry,455,1.0,45.7,5.5,1.5,all
+81,Oats porridge,Breakfast,330,11.0,22.6,5.9,6.4,all
+82,Aloo paratha,Breakfast,439,3.9,35.1,16.7,7.4,vegetarian
+83,Roti,Cereals,455,28.3,54.5,8.8,5.6,vegetarian
+84,Dal,Curry,331,4.0,37.3,5.7,4.7,vegetarian
+85,Buttermilk,Dairy,209,6.1,17.2,18.9,8.9,vegetarian
+86,Kheer,Dessert,52,22.9,4.2,6.1,7.8,vegetarian
+87,Chapati,Cereals,209,18.3,34.4,2.3,5.1,all
+88,Rajma,Curry,94,27.8,21.2,8.7,1.4,non_vegetarian
+89,Sambar,Curry,128,4.0,39.6,19.5,0.2,vegetarian
+90,Paneer curry,Curry,151,27.3,37.9,17.6,9.1,all
+91,Fruit salad,Fruit,79,26.1,0.5,8.1,8.2,all
+92,Oats porridge,Breakfast,246,25.1,10.0,11.0,6.3,vegetarian
+93,Curd,Dairy,253,2.9,59.2,4.7,8.6,all
+94,Sambar,Curry,494,20.6,33.4,1.9,9.1,non_vegetarian
+95,Rice,Cereals,473,19.1,35.3,10.7,5.9,all
+96,Rice,Cereals,465,26.7,39.0,19.5,6.6,all
+97,Pav Bhaji,Snacks,495,15.9,29.3,17.2,5.2,non_vegetarian
+98,Idli,Breakfast,106,11.3,10.1,13.5,7.8,non_vegetarian
+99,Methi paratha,Breakfast,235,0.3,47.9,11.6,2.0,vegetarian
+100,Upma,Snacks,480,26.9,22.9,4.0,4.4,non_vegetarian
+101,Samosa,Snacks,476,19.9,42.8,14.2,0.2,vegetarian
+102,Pakora,Snacks,292,15.7,17.3,13.1,3.7,non_vegetarian
+103,Samosa,Snacks,88,21.8,46.7,4.1,3.3,vegetarian
+104,Aloo paratha,Breakfast,66,28.4,47.6,5.6,9.9,all
+105,Samosa,Snacks,196,12.8,2.3,9.2,5.2,vegetarian
+106,Pav Bhaji,Snacks,232,11.9,58.5,16.1,4.5,vegetarian
+107,Lassi,Dairy,483,3.7,50.4,19.4,7.2,vegetarian
+108,Methi paratha,Breakfast,436,14.9,13.7,7.1,2.9,vegetarian
+109,Oats porridge,Breakfast,108,3.8,48.7,7.7,2.1,vegetarian
+110,Curd,Dairy,320,7.6,3.3,17.9,1.4,non_vegetarian
+111,Rasam,Curry,457,21.8,27.6,2.4,9.1,all
+112,Buttermilk,Dairy,174,11.9,0.1,18.0,3.6,non_vegetarian
+113,Rice,Cereals,276,19.5,36.3,10.6,4.9,non_vegetarian
+114,Chicken curry,Curry,82,13.6,52.1,8.0,9.3,all
+115,Curd,Dairy,207,24.5,33.2,13.5,2.2,vegetarian
+116,Rasam,Curry,131,4.6,45.3,4.6,1.1,all
+117,Dal,Curry,301,18.0,23.3,12.0,7.7,vegetarian
+118,Upma,Snacks,459,9.0,40.2,15.1,6.0,vegetarian
+119,Rajma,Curry,299,20.5,16.7,0.8,1.8,all
+120,Pulao,Cereals,365,4.8,48.0,18.4,0.8,vegetarian
+121,Buttermilk,Dairy,380,15.9,56.7,19.6,7.9,all
+122,Chapati,Cereals,185,15.8,54.9,2.5,9.8,all
+123,Lassi,Dairy,377,9.9,16.1,19.5,8.6,vegetarian
+124,Oats porridge,Breakfast,257,8.1,12.6,8.4,5.5,vegetarian
+125,Methi paratha,Breakfast,299,28.0,32.8,16.1,7.9,non_vegetarian
+126,Chapati,Cereals,290,11.4,37.0,17.4,1.8,vegetarian
+127,Halwa,Dessert,409,21.9,31.4,15.2,7.5,all
+128,Paneer curry,Curry,446,3.2,40.4,8.4,7.6,all
+129,Chole,Curry,454,15.4,21.0,2.2,9.2,non_vegetarian
+130,Idli,Breakfast,409,18.2,33.1,5.2,8.5,non_vegetarian
+131,Pav Bhaji,Snacks,175,4.3,59.6,19.6,4.4,vegetarian
+132,Rice,Cereals,189,10.6,7.8,14.4,7.0,non_vegetarian
+133,Oats porridge,Breakfast,82,2.7,42.2,13.0,7.6,non_vegetarian
+134,Vegetable salad,Salad,80,11.4,37.8,10.6,6.7,non_vegetarian
+135,Pav Bhaji,Snacks,336,25.3,56.5,0.9,0.6,vegetarian
+136,Roti,Cereals,353,20.3,25.0,13.6,0.0,vegetarian
+137,Halwa,Dessert,436,19.2,16.2,11.8,9.3,non_vegetarian
+138,Pakora,Snacks,375,22.6,13.8,3.7,7.5,vegetarian
+139,Rice,Cereals,427,1.6,56.9,8.4,5.0,vegetarian
+140,Lassi,Dairy,127,12.4,40.8,12.0,7.5,non_vegetarian
+141,Rasam,Curry,273,9.5,4.2,19.8,2.1,non_vegetarian
+142,Pakora,Snacks,124,15.9,8.6,15.9,1.0,vegetarian
+143,Roti,Cereals,160,13.2,59.7,12.2,1.4,all
+144,Halwa,Dessert,242,22.8,36.6,4.2,8.5,all
+145,Chicken curry,Curry,397,11.9,13.3,8.5,7.4,all
+146,Halwa,Dessert,404,12.2,59.1,10.8,8.6,vegetarian
+147,Chicken curry,Curry,481,1.6,52.4,5.1,7.6,vegetarian
+148,Chicken curry,Curry,400,14.8,17.1,16.9,3.1,non_vegetarian
+149,Halwa,Dessert,452,8.8,39.6,8.7,2.0,all
+150,Buttermilk,Dairy,345,29.1,53.5,13.3,4.8,all
+151,Dal,Curry,448,18.2,18.8,10.0,8.2,all
+152,Idli,Breakfast,237,3.4,35.8,12.8,5.5,non_vegetarian
+153,Rajma,Curry,451,24.7,37.3,10.4,4.7,all
+154,Paneer curry,Curry,189,16.0,16.4,11.6,9.9,all
+155,Chicken curry,Curry,456,14.9,3.2,12.2,1.0,vegetarian
+156,Buttermilk,Dairy,203,27.0,55.3,14.3,5.1,vegetarian
+157,Chapati,Cereals,295,29.7,43.3,9.3,1.1,all
+158,Lassi,Dairy,375,9.8,10.9,4.3,0.6,non_vegetarian
+159,Halwa,Dessert,336,7.4,49.6,17.8,5.9,vegetarian
+160,Roti,Cereals,488,15.4,30.5,0.8,9.0,all
+161,Idli,Breakfast,312,23.7,59.8,10.1,5.1,vegetarian
+162,Dosa,Breakfast,392,22.4,18.7,2.6,7.0,vegetarian
+163,Rasam,Curry,325,7.5,3.6,6.6,6.0,vegetarian
+164,Halwa,Dessert,217,7.6,19.1,15.1,7.6,vegetarian
+165,Halwa,Dessert,441,2.5,11.8,10.5,8.3,all
+166,Sambar,Curry,391,22.2,58.9,16.5,0.4,vegetarian
+167,Chapati,Cereals,198,16.7,12.6,4.4,3.7,all
+168,Biryani,Cereals,450,5.9,27.8,5.4,2.6,vegetarian
+169,Pakora,Snacks,301,1.4,20.6,8.1,9.8,all
+170,Oats porridge,Breakfast,71,0.4,44.5,9.9,8.1,all
+171,Paneer curry,Curry,240,15.0,51.9,0.3,1.1,all
+172,Lassi,Dairy,55,11.6,51.6,16.5,6.3,vegetarian
+173,Rasam,Curry,317,18.0,25.2,1.2,5.5,vegetarian
+174,Rice,Cereals,399,11.1,51.9,15.1,8.2,non_vegetarian
+175,Upma,Snacks,377,26.1,3.2,12.6,2.7,non_vegetarian
+176,Vegetable salad,Salad,86,9.2,14.7,12.5,7.6,non_vegetarian
+177,Oats porridge,Breakfast,246,8.5,6.7,14.8,5.1,all
+178,Buttermilk,Dairy,104,28.5,23.7,2.1,5.2,vegetarian
+179,Pulao,Cereals,325,21.8,15.4,19.7,1.4,all
+180,Pav Bhaji,Snacks,462,8.0,29.1,2.1,3.1,non_vegetarian
+181,Milk,Dairy,192,3.0,23.2,9.5,5.3,vegetarian
+182,Chole,Curry,364,0.6,36.3,13.6,0.9,all
+183,Roti,Cereals,188,28.8,43.5,17.6,3.7,vegetarian
+184,Chole,Curry,354,17.0,20.5,3.3,1.5,non_vegetarian
+185,Vegetable salad,Salad,345,26.6,46.9,7.0,0.7,all
+186,Milk,Dairy,421,5.7,34.2,9.3,3.9,non_vegetarian
+187,Milk,Dairy,58,28.3,47.4,2.9,8.0,non_vegetarian
+188,Chole,Curry,468,6.4,26.9,15.4,4.5,vegetarian
+189,Poha,Breakfast,280,27.5,39.7,4.4,4.9,non_vegetarian
+190,Rajma,Curry,286,4.8,1.7,20.0,7.7,all
+191,Milk,Dairy,223,26.4,31.9,16.1,7.3,non_vegetarian
+192,Halwa,Dessert,385,17.7,56.2,13.7,3.1,all
+193,Upma,Snacks,342,12.3,12.8,11.1,1.5,all
+194,Lassi,Dairy,185,18.3,41.8,14.9,7.7,vegetarian
+195,Roti,Cereals,249,22.0,4.6,18.1,0.4,non_vegetarian
+196,Biryani,Cereals,422,14.0,42.0,16.2,8.4,non_vegetarian
+197,Pulao,Cereals,401,29.9,29.1,17.2,9.0,vegetarian
+198,Dal,Curry,421,26.1,30.3,5.3,6.5,non_vegetarian
+199,Kheer,Dessert,98,8.1,19.4,0.2,5.6,non_vegetarian
+200,Dosa,Breakfast,408,3.6,54.2,4.6,2.1,vegetarian
+201,Dosa,Breakfast,409,18.4,55.5,17.7,6.4,non_vegetarian
+202,Aloo paratha,Breakfast,113,2.1,15.6,12.2,2.9,vegetarian
+203,Rasam,Curry,396,4.9,44.6,15.4,2.2,all
+204,Rice,Cereals,306,7.1,40.2,18.7,2.2,non_vegetarian
+205,Roti,Cereals,304,12.1,59.4,2.4,5.9,non_vegetarian
+206,Chapati,Cereals,382,28.6,26.0,7.3,0.1,non_vegetarian
+207,Methi paratha,Breakfast,485,14.1,52.9,3.8,7.1,vegetarian
+208,Dosa,Breakfast,99,3.9,55.4,12.6,6.9,all
+209,Dosa,Breakfast,442,13.5,39.7,12.0,2.6,vegetarian
+210,Chicken curry,Curry,71,4.7,23.0,16.2,4.6,non_vegetarian
+211,Upma,Snacks,315,5.8,6.5,0.2,5.3,non_vegetarian
+212,Samosa,Snacks,362,15.6,3.3,12.1,0.6,all
+213,Fruit salad,Fruit,222,6.1,41.9,16.3,6.9,non_vegetarian
+214,Fruit salad,Fruit,414,24.1,20.0,4.2,7.2,all
+215,Fruit salad,Fruit,212,21.3,38.7,9.5,0.7,vegetarian
+216,Roti,Cereals,469,8.1,55.3,13.7,4.7,vegetarian
+217,Halwa,Dessert,50,23.0,52.4,18.9,1.6,vegetarian
+218,Rice,Cereals,355,19.6,20.8,4.0,0.4,vegetarian
+219,Halwa,Dessert,50,20.3,56.1,11.5,3.0,all
+220,Lassi,Dairy,229,8.2,8.4,13.8,1.0,non_vegetarian
+221,Dal,Curry,415,23.5,40.4,0.0,2.3,all
+222,Paneer curry,Curry,105,16.9,35.1,0.6,0.6,non_vegetarian
+223,Rajma,Curry,389,26.4,59.8,4.5,2.2,non_vegetarian
+224,Pav Bhaji,Snacks,64,20.7,23.5,14.4,1.4,non_vegetarian
+225,Aloo paratha,Breakfast,370,16.5,45.5,5.3,2.5,all
+226,Halwa,Dessert,437,25.8,41.3,16.6,2.6,vegetarian
+227,Chapati,Cereals,55,12.4,29.2,14.8,7.4,all
+228,Milk,Dairy,390,10.8,17.2,2.1,8.1,vegetarian
+229,Chole,Curry,381,7.3,12.5,3.8,5.5,vegetarian
+230,Biryani,Cereals,180,7.0,12.3,6.3,0.2,all
+231,Idli,Breakfast,188,16.2,34.8,15.2,8.8,all
+232,Dosa,Breakfast,118,13.1,43.7,1.2,9.8,non_vegetarian
+233,Buttermilk,Dairy,145,13.8,41.3,11.7,2.1,vegetarian
+234,Rice,Cereals,247,1.7,52.8,12.3,9.8,non_vegetarian
+235,Chole,Curry,208,28.9,51.8,15.4,4.8,vegetarian
+236,Pakora,Snacks,258,24.7,21.0,17.3,0.5,all
+237,Sambar,Curry,318,24.0,51.6,0.6,6.6,non_vegetarian
+238,Fruit salad,Fruit,127,20.7,41.6,14.7,7.1,all
+239,Curd,Dairy,366,16.3,49.2,1.2,0.0,vegetarian
+240,Pakora,Snacks,486,8.6,3.0,3.7,6.1,all
+241,Dosa,Breakfast,131,2.6,48.9,12.8,7.5,all
+242,Curd,Dairy,221,25.9,25.4,15.4,0.1,all
+243,Chicken curry,Curry,438,28.1,46.1,17.8,6.1,non_vegetarian
+244,Pav Bhaji,Snacks,367,28.2,30.4,19.1,10.0,non_vegetarian
+245,Rasam,Curry,53,20.6,41.8,13.3,1.2,vegetarian
+246,Curd,Dairy,191,10.7,49.5,7.4,4.5,all
+247,Chicken curry,Curry,232,0.8,37.2,19.8,6.0,non_vegetarian
+248,Aloo paratha,Breakfast,222,4.1,17.1,7.5,2.4,non_vegetarian
+249,Lassi,Dairy,228,25.1,25.6,8.5,9.8,vegetarian
+250,Methi paratha,Breakfast,331,22.6,21.0,5.1,7.9,all
+251,Chole,Curry,332,22.0,17.2,5.4,9.1,non_vegetarian
+252,Curd,Dairy,94,5.6,54.4,8.9,7.6,all
+253,Aloo paratha,Breakfast,56,21.9,54.5,12.6,9.3,all
+254,Fruit salad,Fruit,83,24.9,17.5,1.3,7.3,all
+255,Buttermilk,Dairy,149,13.9,44.7,5.4,8.7,vegetarian
+256,Rice,Cereals,123,28.2,55.0,15.0,2.0,all
+257,Halwa,Dessert,243,7.0,34.5,17.7,5.8,non_vegetarian
+258,Vegetable salad,Salad,252,16.5,57.0,11.2,3.6,all
+259,Dal,Curry,408,29.2,59.1,13.6,0.1,non_vegetarian
+260,Pakora,Snacks,362,13.4,18.8,6.9,0.2,non_vegetarian
+261,Poha,Breakfast,296,2.9,51.1,11.3,6.9,all
+262,Dosa,Breakfast,385,0.0,44.6,8.9,3.8,all
+263,Oats porridge,Breakfast,285,7.0,41.1,8.3,4.2,non_vegetarian
+264,Roti,Cereals,118,3.3,19.1,11.7,6.0,all
+265,Aloo paratha,Breakfast,114,16.1,54.4,12.9,4.5,non_vegetarian
+266,Chole,Curry,327,12.5,37.2,1.1,6.1,vegetarian
+267,Roti,Cereals,163,2.2,43.7,15.1,6.1,non_vegetarian
+268,Kheer,Dessert,303,17.3,8.6,19.1,1.4,non_vegetarian
+269,Sambar,Curry,197,3.6,43.9,1.6,1.1,all
+270,Halwa,Dessert,152,0.9,33.3,14.4,5.6,non_vegetarian
+271,Sambar,Curry,152,22.7,5.1,9.3,0.4,vegetarian
+272,Pav Bhaji,Snacks,337,29.2,24.1,8.2,0.4,all
+273,Aloo paratha,Breakfast,420,27.6,44.1,4.4,4.0,vegetarian
+274,Chole,Curry,238,24.5,14.4,12.9,9.7,non_vegetarian
+275,Curd,Dairy,406,25.5,1.6,5.4,7.2,vegetarian
+276,Poha,Breakfast,157,27.1,8.4,6.6,0.4,vegetarian
+277,Aloo paratha,Breakfast,429,16.1,28.2,15.5,9.5,vegetarian
+278,Upma,Snacks,150,29.9,42.0,16.7,3.7,non_vegetarian
+279,Halwa,Dessert,283,22.0,0.9,10.1,4.2,vegetarian
+280,Dal,Curry,76,11.4,42.7,8.2,9.5,non_vegetarian
+281,Sambar,Curry,394,25.0,42.8,18.8,3.8,non_vegetarian
+282,Samosa,Snacks,426,17.9,0.8,1.5,0.2,vegetarian
+283,Halwa,Dessert,455,5.6,44.2,6.8,6.7,all
+284,Milk,Dairy,438,22.1,22.1,17.8,8.2,vegetarian
+285,Dal,Curry,215,27.8,28.3,16.1,9.4,all
+286,Aloo paratha,Breakfast,357,4.5,55.0,1.5,7.1,non_vegetarian
+287,Fruit salad,Fruit,168,9.1,9.0,14.1,0.8,non_vegetarian
+288,Dosa,Breakfast,61,19.0,3.4,2.5,0.1,vegetarian
+289,Chicken curry,Curry,130,1.9,12.0,19.0,5.5,all
+290,Samosa,Snacks,87,29.0,8.3,18.0,2.4,non_vegetarian
+291,Sambar,Curry,309,20.6,10.8,10.9,5.0,vegetarian
+292,Kheer,Dessert,490,16.3,52.2,11.2,9.8,all
+293,Rasam,Curry,379,14.4,10.0,16.2,9.3,non_vegetarian
+294,Idli,Breakfast,326,10.8,34.2,11.3,3.5,non_vegetarian
+295,Biryani,Cereals,77,12.4,35.8,7.5,6.5,vegetarian
+296,Chicken curry,Curry,400,18.7,21.5,11.9,1.0,non_vegetarian
+297,Poha,Breakfast,389,27.3,5.8,6.4,4.0,all
+298,Rajma,Curry,354,8.9,40.1,7.4,7.5,non_vegetarian
+299,Rajma,Curry,323,1.5,19.4,10.4,6.5,all
+300,Biryani,Cereals,61,25.7,16.9,16.5,6.4,non_vegetarian
+301,Aloo paratha,Breakfast,463,3.9,6.2,3.7,3.8,vegetarian
+302,Dal,Curry,119,11.2,27.6,13.9,7.6,vegetarian
+303,Chole,Curry,260,7.3,29.5,13.2,7.7,vegetarian
+304,Dosa,Breakfast,272,2.8,11.5,16.2,4.2,vegetarian
+305,Milk,Dairy,150,4.8,2.4,19.0,4.9,vegetarian
+306,Buttermilk,Dairy,460,16.4,29.6,16.6,3.8,all
+307,Oats porridge,Breakfast,424,10.0,48.7,0.8,7.0,non_vegetarian
+308,Pakora,Snacks,171,6.7,6.5,12.0,7.9,vegetarian
+309,Rasam,Curry,275,22.5,57.5,4.2,4.7,all
+310,Halwa,Dessert,356,16.1,42.6,15.0,7.4,non_vegetarian
+311,Pulao,Cereals,464,10.5,37.0,9.9,8.6,non_vegetarian
+312,Fruit salad,Fruit,297,10.2,50.4,8.6,4.6,vegetarian
+313,Curd,Dairy,439,7.5,54.3,7.2,8.6,vegetarian
+314,Pakora,Snacks,429,8.0,27.2,10.0,8.6,vegetarian
+315,Curd,Dairy,182,11.6,56.4,2.9,9.0,all
+316,Rice,Cereals,434,28.7,47.4,0.5,1.7,vegetarian
+317,Vegetable salad,Salad,187,15.1,41.4,13.5,5.7,non_vegetarian
+318,Rasam,Curry,55,29.5,17.7,17.7,3.0,vegetarian
+319,Chicken curry,Curry,65,6.6,0.4,6.8,0.8,vegetarian
+320,Fruit salad,Fruit,252,16.7,28.2,15.7,8.0,non_vegetarian
+321,Paneer curry,Curry,323,27.8,27.2,7.9,4.6,all
+322,Samosa,Snacks,84,8.5,35.3,7.8,6.3,non_vegetarian
+323,Aloo paratha,Breakfast,414,7.5,35.2,8.0,2.7,non_vegetarian
+324,Poha,Breakfast,84,16.1,28.0,11.5,2.5,vegetarian
+325,Biryani,Cereals,429,6.0,16.7,11.8,9.6,non_vegetarian
+326,Chapati,Cereals,120,10.1,55.3,9.4,9.5,all
+327,Pulao,Cereals,290,24.6,12.9,1.9,8.1,all
+328,Pakora,Snacks,339,12.7,2.5,9.8,3.5,vegetarian
+329,Chapati,Cereals,489,10.6,14.2,0.8,2.2,all
+330,Rajma,Curry,293,20.3,11.0,18.9,2.0,all
+331,Buttermilk,Dairy,427,5.4,19.3,17.0,5.2,non_vegetarian
+332,Pav Bhaji,Snacks,73,7.4,48.4,6.5,0.4,non_vegetarian
+333,Dal,Curry,70,15.4,46.5,1.7,6.3,non_vegetarian
+334,Samosa,Snacks,72,18.1,8.0,9.3,4.6,non_vegetarian
+335,Roti,Cereals,426,29.3,50.1,8.9,1.1,non_vegetarian
+336,Methi paratha,Breakfast,76,6.3,23.8,14.9,3.1,all
+337,Upma,Snacks,316,11.1,57.6,7.4,2.1,all
+338,Aloo paratha,Breakfast,93,25.8,46.0,12.4,5.7,all
+339,Sambar,Curry,185,12.0,3.3,2.3,1.0,vegetarian
+340,Chicken curry,Curry,479,21.5,56.8,8.2,7.2,vegetarian
+341,Pav Bhaji,Snacks,246,28.6,28.6,11.6,7.4,vegetarian
+342,Dal,Curry,467,27.4,50.7,4.7,4.0,non_vegetarian
+343,Idli,Breakfast,97,9.7,30.7,5.4,1.7,all
+344,Halwa,Dessert,480,18.1,3.9,4.2,4.8,vegetarian
+345,Vegetable salad,Salad,311,10.3,25.1,9.7,9.3,all
+346,Rajma,Curry,238,18.1,33.5,18.0,5.3,vegetarian
+347,Rajma,Curry,364,17.3,28.3,15.0,3.2,vegetarian
+348,Pulao,Cereals,271,28.3,30.8,6.2,4.8,non_vegetarian
+349,Fruit salad,Fruit,245,10.6,28.5,1.2,9.7,non_vegetarian
+350,Biryani,Cereals,197,11.5,47.0,8.1,9.7,vegetarian
+351,Fruit salad,Fruit,362,17.0,23.7,11.7,9.1,non_vegetarian
+352,Chole,Curry,102,0.3,23.5,7.7,8.0,all
+353,Pav Bhaji,Snacks,292,16.6,27.9,7.9,2.3,all
+354,Pakora,Snacks,466,17.3,8.9,10.3,2.8,all
+355,Chicken curry,Curry,269,0.1,55.8,7.9,1.3,vegetarian
+356,Samosa,Snacks,227,3.2,15.4,15.6,4.7,all
+357,Dal,Curry,487,4.9,16.8,18.3,1.6,non_vegetarian
+358,Pakora,Snacks,303,22.7,35.2,3.4,5.6,vegetarian
+359,Fruit salad,Fruit,76,15.4,42.4,10.9,8.6,all
+360,Pakora,Snacks,464,24.6,10.0,13.1,1.8,non_vegetarian
+361,Methi paratha,Breakfast,221,18.4,21.7,10.0,4.0,vegetarian
+362,Aloo paratha,Breakfast,107,3.1,14.8,2.3,6.2,vegetarian
+363,Milk,Dairy,204,11.9,17.8,7.7,8.0,all
+364,Oats porridge,Breakfast,207,8.8,8.2,1.4,2.7,all
+365,Pakora,Snacks,269,9.5,12.1,2.9,8.5,vegetarian
+366,Methi paratha,Breakfast,487,5.8,31.0,15.1,0.7,vegetarian
+367,Chapati,Cereals,309,0.8,34.5,19.4,7.7,non_vegetarian
+368,Roti,Cereals,429,4.5,15.7,19.2,0.8,vegetarian
+369,Curd,Dairy,351,22.2,52.3,11.8,8.5,non_vegetarian
+370,Rice,Cereals,253,10.1,19.5,10.6,0.3,vegetarian
+371,Oats porridge,Breakfast,132,7.6,41.7,16.2,1.3,all
+372,Roti,Cereals,451,12.6,41.9,16.7,4.9,vegetarian
+373,Sambar,Curry,368,1.6,39.3,18.9,5.5,all
+374,Biryani,Cereals,445,10.0,23.2,11.8,5.8,all
+375,Roti,Cereals,422,0.7,49.9,3.4,2.1,all
+376,Kheer,Dessert,338,3.0,38.5,8.9,7.9,non_vegetarian
+377,Lassi,Dairy,70,11.6,7.9,7.3,6.3,all
+378,Rasam,Curry,311,2.2,17.3,6.0,8.0,all
+379,Milk,Dairy,318,11.1,14.5,1.4,2.6,non_vegetarian
+380,Sambar,Curry,341,13.4,30.2,2.6,8.1,all
+381,Kheer,Dessert,247,14.3,47.8,5.3,1.9,all
+382,Buttermilk,Dairy,294,29.0,0.8,17.7,2.6,vegetarian
+383,Dosa,Breakfast,323,29.4,46.9,3.6,5.3,all
+384,Methi paratha,Breakfast,466,13.6,13.6,11.1,8.4,non_vegetarian
+385,Pav Bhaji,Snacks,426,13.3,49.6,19.9,0.3,all
+386,Kheer,Dessert,304,29.9,25.4,19.4,3.4,all
+387,Dal,Curry,182,3.2,45.0,13.3,8.5,non_vegetarian
+388,Chicken curry,Curry,169,23.5,40.8,0.4,9.5,all
+389,Chapati,Cereals,173,13.6,44.0,15.5,4.5,vegetarian
+390,Kheer,Dessert,499,9.6,57.3,16.3,3.2,vegetarian
+391,Samosa,Snacks,219,3.2,5.7,13.8,8.8,all
+392,Chole,Curry,286,19.7,12.2,10.8,4.3,non_vegetarian
+393,Buttermilk,Dairy,236,12.2,2.3,16.7,1.0,non_vegetarian
+394,Rajma,Curry,187,13.3,53.3,16.0,5.7,non_vegetarian
+395,Dal,Curry,185,21.9,39.6,11.0,7.1,vegetarian
+396,Dal,Curry,376,27.8,32.3,7.0,7.2,vegetarian
+397,Chole,Curry,192,3.2,51.7,6.4,0.3,vegetarian
+398,Halwa,Dessert,183,0.1,17.3,11.1,0.4,vegetarian
+399,Paneer curry,Curry,483,13.8,50.0,13.0,3.8,all
+400,Aloo paratha,Breakfast,85,26.9,55.5,14.6,9.3,non_vegetarian
+401,Vegetable salad,Salad,269,12.3,45.9,15.5,6.2,non_vegetarian
+402,Milk,Dairy,75,8.6,27.5,3.0,3.8,non_vegetarian
+403,Pav Bhaji,Snacks,360,3.2,52.9,16.9,9.3,non_vegetarian
+404,Samosa,Snacks,199,5.2,56.8,10.8,0.0,non_vegetarian
+405,Samosa,Snacks,125,14.1,32.5,3.9,8.6,vegetarian
+406,Curd,Dairy,192,0.6,36.6,7.9,6.8,non_vegetarian
+407,Fruit salad,Fruit,61,29.7,57.7,11.0,3.4,all
+408,Vegetable salad,Salad,271,8.3,22.1,12.4,3.7,non_vegetarian
+409,Dosa,Breakfast,400,0.8,21.6,3.9,4.5,all
+410,Kheer,Dessert,441,14.0,17.5,9.7,5.7,non_vegetarian
+411,Lassi,Dairy,260,6.7,30.4,12.5,9.4,vegetarian
+412,Rice,Cereals,341,22.2,16.2,7.6,7.7,all
+413,Buttermilk,Dairy,146,0.2,1.8,12.1,2.1,non_vegetarian
+414,Chapati,Cereals,418,14.3,12.3,15.9,6.0,all
+415,Chole,Curry,185,3.4,44.2,12.8,4.0,vegetarian
+416,Milk,Dairy,203,14.0,53.2,13.1,9.0,all
+417,Dosa,Breakfast,79,29.1,42.9,7.2,9.8,non_vegetarian
+418,Curd,Dairy,157,1.3,36.5,2.3,6.3,all
+419,Dosa,Breakfast,340,25.4,43.3,15.6,0.7,vegetarian
+420,Kheer,Dessert,58,21.4,52.8,5.5,5.8,all
+421,Pakora,Snacks,312,5.4,27.1,18.8,5.2,non_vegetarian
+422,Idli,Breakfast,277,13.1,4.6,19.9,4.5,all
+423,Roti,Cereals,379,8.4,49.1,14.4,5.9,all
+424,Kheer,Dessert,301,3.6,41.2,19.0,3.4,all
+425,Rajma,Curry,272,8.1,36.2,3.4,1.8,all
+426,Samosa,Snacks,402,7.4,1.5,1.3,9.2,all
+427,Dosa,Breakfast,212,12.9,54.4,16.7,0.5,all
+428,Chole,Curry,426,14.8,35.6,4.0,1.0,vegetarian
+429,Rajma,Curry,244,6.2,1.7,9.4,8.3,all
+430,Poha,Breakfast,152,21.7,14.9,2.4,2.4,all
+431,Dosa,Breakfast,484,13.9,35.9,15.3,4.6,non_vegetarian
+432,Chicken curry,Curry,328,1.0,38.5,4.1,0.0,non_vegetarian
+433,Oats porridge,Breakfast,99,17.9,40.8,19.9,7.8,all
+434,Roti,Cereals,457,29.7,2.0,15.8,6.8,vegetarian
+435,Biryani,Cereals,54,1.9,49.4,11.4,3.7,all
+436,Vegetable salad,Salad,438,11.1,43.0,12.8,0.5,vegetarian
+437,Pakora,Snacks,237,22.0,54.1,8.2,8.1,vegetarian
+438,Buttermilk,Dairy,446,16.9,19.3,18.5,6.9,all
+439,Idli,Breakfast,220,8.5,30.2,15.6,3.5,non_vegetarian
+440,Chicken curry,Curry,374,23.7,19.0,10.4,4.9,non_vegetarian
+441,Chole,Curry,193,13.8,23.9,7.9,9.3,non_vegetarian
+442,Biryani,Cereals,110,15.4,23.5,2.5,7.3,non_vegetarian
+443,Buttermilk,Dairy,77,29.1,30.3,8.9,4.2,vegetarian
+444,Kheer,Dessert,150,8.7,27.7,15.4,2.8,vegetarian
+445,Lassi,Dairy,75,3.9,18.2,13.1,0.2,non_vegetarian
+446,Chapati,Cereals,236,29.9,36.9,14.3,8.0,vegetarian
+447,Poha,Breakfast,185,27.7,44.0,11.8,0.0,vegetarian
+448,Sambar,Curry,232,19.5,1.7,8.7,1.9,all
+449,Poha,Breakfast,353,13.8,31.6,16.4,1.1,non_vegetarian
+450,Milk,Dairy,244,18.8,48.7,15.5,9.4,vegetarian
+451,Chapati,Cereals,444,11.8,53.7,19.4,2.5,all
+452,Pulao,Cereals,264,26.7,21.6,13.4,8.4,all
+453,Vegetable salad,Salad,477,24.9,24.5,5.2,8.2,non_vegetarian
+454,Chapati,Cereals,138,1.1,33.3,18.6,3.8,non_vegetarian
+455,Vegetable salad,Salad,173,11.6,29.5,18.5,1.7,non_vegetarian
+456,Paneer curry,Curry,208,7.7,19.4,3.0,1.5,non_vegetarian
+457,Oats porridge,Breakfast,84,20.2,58.3,13.6,6.1,vegetarian
+458,Dosa,Breakfast,453,28.6,28.8,9.3,1.6,vegetarian
+459,Pav Bhaji,Snacks,332,5.5,25.0,8.4,8.1,non_vegetarian
+460,Chicken curry,Curry,78,11.6,52.9,9.4,1.2,non_vegetarian
+461,Milk,Dairy,51,29.5,25.1,8.0,0.2,vegetarian
+462,Vegetable salad,Salad,468,24.6,57.4,2.6,9.3,non_vegetarian
+463,Roti,Cereals,472,3.5,13.8,10.2,3.9,vegetarian
+464,Poha,Breakfast,214,10.6,16.5,19.4,3.5,non_vegetarian
+465,Oats porridge,Breakfast,137,28.7,32.3,8.8,8.0,all
+466,Oats porridge,Breakfast,243,10.0,33.7,19.6,1.9,all
+467,Oats porridge,Breakfast,380,3.1,32.1,2.2,6.7,vegetarian
+468,Rice,Cereals,454,6.6,35.3,3.5,2.0,vegetarian
+469,Buttermilk,Dairy,165,16.5,49.3,8.5,0.6,all
+470,Chapati,Cereals,350,29.2,37.1,11.4,8.8,non_vegetarian
+471,Aloo paratha,Breakfast,153,20.3,13.5,0.5,0.8,non_vegetarian
+472,Roti,Cereals,114,20.0,8.4,0.9,4.9,non_vegetarian
+473,Biryani,Cereals,301,3.2,4.7,9.1,2.2,all
+474,Halwa,Dessert,122,17.2,19.1,13.7,5.2,vegetarian
+475,Samosa,Snacks,137,12.1,2.5,1.5,3.5,non_vegetarian
+476,Fruit salad,Fruit,433,18.6,44.3,5.4,3.1,non_vegetarian
+477,Rajma,Curry,88,1.8,0.2,2.4,8.2,non_vegetarian
+478,Poha,Breakfast,328,18.7,9.8,4.7,6.9,non_vegetarian
+479,Curd,Dairy,193,6.9,35.6,4.0,8.7,vegetarian
+480,Samosa,Snacks,93,11.8,53.9,7.5,9.0,all
+481,Rajma,Curry,341,5.4,2.9,16.3,3.0,vegetarian
+482,Poha,Breakfast,375,19.3,52.2,17.8,2.3,all
+483,Roti,Cereals,162,18.6,35.6,10.4,2.2,vegetarian
+484,Methi paratha,Breakfast,61,0.8,34.4,3.3,1.1,vegetarian
+485,Dal,Curry,74,10.3,44.8,2.7,5.6,all
+486,Rasam,Curry,382,15.6,38.4,10.4,3.9,non_vegetarian
+487,Pav Bhaji,Snacks,286,25.7,40.8,1.3,9.0,non_vegetarian
+488,Aloo paratha,Breakfast,299,4.1,41.0,2.9,2.8,vegetarian
+489,Pulao,Cereals,100,0.6,58.9,13.6,7.4,non_vegetarian
+490,Samosa,Snacks,440,14.1,27.2,4.4,4.9,all
+491,Roti,Cereals,387,20.3,44.2,3.4,4.0,all
+492,Rice,Cereals,162,18.9,15.3,17.2,6.2,all
+493,Dal,Curry,75,15.9,9.0,0.0,4.6,non_vegetarian
+494,Dosa,Breakfast,351,7.9,30.3,14.5,6.4,non_vegetarian
+495,Poha,Breakfast,91,22.7,31.3,17.2,3.6,vegetarian
+496,Poha,Breakfast,423,3.4,12.9,5.2,0.9,vegetarian
+497,Biryani,Cereals,365,29.7,59.0,9.3,4.8,vegetarian
+498,Fruit salad,Fruit,422,9.3,38.5,11.4,7.7,non_vegetarian
+499,Upma,Snacks,250,21.6,42.0,13.6,7.4,vegetarian
+500,Sambar,Curry,445,25.8,45.2,16.2,0.9,non_vegetarian
+501,Sambar,Curry,355,0.4,28.0,19.7,2.1,all
+502,Vegetable salad,Salad,190,17.0,18.1,12.5,9.9,all
+503,Buttermilk,Dairy,129,2.6,37.0,15.8,4.4,vegetarian
+504,Sambar,Curry,142,13.8,11.0,19.0,9.8,vegetarian
+505,Vegetable salad,Salad,97,27.5,44.7,3.2,8.2,vegetarian
+506,Chole,Curry,238,1.8,39.7,9.1,4.8,non_vegetarian
+507,Lassi,Dairy,220,5.0,24.7,3.9,6.2,vegetarian
+508,Oats porridge,Breakfast,92,28.9,11.3,18.4,8.6,non_vegetarian
+509,Fruit salad,Fruit,69,14.1,44.0,2.8,1.3,vegetarian
+510,Pav Bhaji,Snacks,268,28.6,40.3,14.3,5.3,all
+511,Buttermilk,Dairy,112,28.4,36.7,10.4,0.2,all
+512,Roti,Cereals,236,10.6,43.6,13.2,8.9,vegetarian
+513,Paneer curry,Curry,182,27.4,10.6,12.8,2.9,vegetarian
+514,Samosa,Snacks,57,29.8,20.0,1.8,6.6,non_vegetarian
+515,Biryani,Cereals,99,30.0,15.2,19.6,6.3,vegetarian
+516,Paneer curry,Curry,398,7.7,47.1,3.1,7.5,vegetarian
+517,Sambar,Curry,249,1.2,28.6,18.7,2.0,vegetarian
+518,Sambar,Curry,329,9.3,55.8,9.4,3.7,all
+519,Chicken curry,Curry,370,25.0,10.0,17.2,7.6,non_vegetarian
+520,Buttermilk,Dairy,152,6.9,55.1,18.3,1.6,non_vegetarian
+521,Kheer,Dessert,330,25.6,45.1,1.7,9.9,all
+522,Paneer curry,Curry,216,26.5,41.2,13.2,1.9,vegetarian
+523,Pakora,Snacks,190,24.2,33.1,12.7,5.5,non_vegetarian
+524,Biryani,Cereals,188,29.2,42.9,13.9,0.5,all
+525,Rasam,Curry,221,11.3,4.1,1.4,3.0,vegetarian
+526,Oats porridge,Breakfast,149,14.4,40.6,18.7,8.3,non_vegetarian
+527,Milk,Dairy,76,10.9,8.0,19.8,5.8,all
+528,Dal,Curry,219,12.1,23.2,19.8,3.3,all
+529,Upma,Snacks,421,20.7,11.7,7.3,5.7,non_vegetarian
+530,Rice,Cereals,153,22.0,23.0,6.4,2.6,vegetarian
+531,Buttermilk,Dairy,247,19.8,30.7,18.7,0.9,vegetarian
+532,Aloo paratha,Breakfast,470,2.7,23.6,11.6,6.1,all
+533,Paneer curry,Curry,275,20.6,9.8,16.0,7.9,vegetarian
+534,Lassi,Dairy,332,12.6,51.0,18.2,8.1,non_vegetarian
+535,Vegetable salad,Salad,305,26.3,32.3,18.1,2.8,non_vegetarian
+536,Pulao,Cereals,262,0.6,25.2,10.9,2.7,non_vegetarian
+537,Upma,Snacks,233,5.5,24.5,6.7,8.8,non_vegetarian
+538,Fruit salad,Fruit,173,27.8,20.2,0.9,2.9,non_vegetarian
+539,Idli,Breakfast,316,2.0,18.5,8.0,1.7,all
+540,Pav Bhaji,Snacks,343,1.5,29.6,13.0,9.9,non_vegetarian
+541,Upma,Snacks,132,0.1,36.2,17.8,3.6,non_vegetarian
+542,Milk,Dairy,241,2.8,36.2,0.4,9.7,vegetarian
+543,Pulao,Cereals,461,29.1,31.7,19.9,1.2,non_vegetarian
+544,Buttermilk,Dairy,164,14.5,21.6,14.7,8.1,vegetarian
+545,Chapati,Cereals,267,19.2,19.0,6.9,5.0,vegetarian
+546,Milk,Dairy,230,3.4,19.4,16.2,7.4,vegetarian
+547,Aloo paratha,Breakfast,313,21.6,36.0,0.6,6.6,non_vegetarian
+548,Biryani,Cereals,54,24.5,32.3,12.2,7.5,non_vegetarian
+549,Rice,Cereals,129,5.2,34.6,3.4,5.0,non_vegetarian
+550,Fruit salad,Fruit,383,13.2,10.3,12.6,9.5,non_vegetarian
+551,Pav Bhaji,Snacks,316,8.6,45.9,19.6,0.4,all
+552,Paneer curry,Curry,356,22.2,20.3,10.6,1.2,all
+553,Rajma,Curry,352,28.4,34.1,18.9,2.4,vegetarian
+554,Milk,Dairy,59,11.2,26.6,6.9,5.6,non_vegetarian
+555,Chole,Curry,487,27.7,42.9,4.8,9.8,vegetarian
+556,Sambar,Curry,112,11.9,15.4,18.5,4.5,non_vegetarian
+557,Milk,Dairy,372,3.1,59.8,1.7,2.1,non_vegetarian
+558,Paneer curry,Curry,179,25.8,19.5,11.6,9.9,all
+559,Chole,Curry,338,1.4,36.6,6.1,6.3,vegetarian
+560,Samosa,Snacks,299,16.0,27.9,15.1,1.7,all
+561,Rice,Cereals,69,7.1,33.1,7.1,9.8,all
+562,Paneer curry,Curry,147,13.9,45.8,16.6,5.5,non_vegetarian
+563,Milk,Dairy,131,23.0,45.2,16.3,5.8,vegetarian
+564,Lassi,Dairy,76,13.4,57.1,5.8,1.4,all
+565,Curd,Dairy,54,4.7,27.3,4.9,3.6,all
+566,Halwa,Dessert,448,7.1,32.8,5.0,4.3,non_vegetarian
+567,Pakora,Snacks,184,2.0,45.8,8.8,1.5,non_vegetarian
+568,Rice,Cereals,135,11.5,41.0,1.2,5.9,all
+569,Idli,Breakfast,199,11.2,9.4,14.7,5.4,all
+570,Rice,Cereals,484,16.6,51.2,5.4,4.4,vegetarian
+571,Pulao,Cereals,464,16.5,8.3,10.0,4.1,vegetarian
+572,Vegetable salad,Salad,143,12.4,38.1,18.1,6.6,non_vegetarian
+573,Poha,Breakfast,347,1.9,9.2,6.6,7.4,vegetarian
+574,Sambar,Curry,257,10.2,42.4,6.3,1.8,all
+575,Dosa,Breakfast,306,21.3,6.7,7.5,8.7,non_vegetarian
+576,Dosa,Breakfast,430,8.8,4.2,8.0,6.0,all
+577,Poha,Breakfast,417,29.4,31.5,3.6,5.1,vegetarian
+578,Rice,Cereals,107,11.1,33.5,13.3,0.7,non_vegetarian
+579,Halwa,Dessert,381,16.1,16.1,4.8,6.3,all
+580,Methi paratha,Breakfast,312,10.1,54.7,8.6,2.9,all
+581,Buttermilk,Dairy,107,18.2,24.8,19.5,4.7,all
+582,Idli,Breakfast,390,24.9,60.0,16.6,1.6,vegetarian
+583,Aloo paratha,Breakfast,392,1.2,24.5,4.7,7.0,non_vegetarian
+584,Roti,Cereals,66,29.9,10.8,6.4,4.1,non_vegetarian
+585,Pakora,Snacks,105,26.4,29.6,1.2,1.4,vegetarian
+586,Rajma,Curry,374,24.5,29.8,18.5,7.1,non_vegetarian
+587,Buttermilk,Dairy,213,12.9,10.3,16.8,4.2,vegetarian
+588,Rice,Cereals,124,10.4,44.4,4.4,1.5,non_vegetarian
+589,Idli,Breakfast,255,17.8,46.9,7.9,8.0,all
+590,Fruit salad,Fruit,145,16.2,11.0,7.5,3.1,vegetarian
+591,Methi paratha,Breakfast,290,27.5,39.0,19.8,0.0,non_vegetarian
+592,Sambar,Curry,342,0.2,21.2,1.5,5.7,vegetarian
+593,Lassi,Dairy,414,10.5,57.1,13.3,7.0,non_vegetarian
+594,Aloo paratha,Breakfast,249,2.8,59.8,17.6,0.5,all
+595,Chole,Curry,417,12.3,32.1,18.6,2.4,non_vegetarian
+596,Chicken curry,Curry,496,29.9,3.8,5.5,8.4,vegetarian
+597,Roti,Cereals,153,5.8,24.4,9.7,1.5,non_vegetarian
+598,Chicken curry,Curry,161,11.8,14.7,4.0,5.7,vegetarian
+599,Dal,Curry,236,0.0,31.6,12.7,3.4,non_vegetarian
+600,Paneer curry,Curry,108,3.7,47.4,14.3,1.7,non_vegetarian
+601,Paneer curry,Curry,141,22.0,53.2,2.3,5.3,all
+602,Kheer,Dessert,203,29.9,57.3,1.2,1.7,vegetarian
+603,Samosa,Snacks,267,9.9,20.5,4.3,5.1,non_vegetarian
+604,Samosa,Snacks,332,20.7,0.8,8.7,9.7,non_vegetarian
+605,Chapati,Cereals,236,4.3,34.7,11.0,7.6,all
+606,Lassi,Dairy,181,19.5,5.3,17.4,3.0,all
+607,Milk,Dairy,420,12.4,59.9,4.5,2.1,all
+608,Lassi,Dairy,347,5.8,35.4,13.7,0.9,non_vegetarian
+609,Chole,Curry,365,25.1,36.5,2.0,4.5,vegetarian
+610,Biryani,Cereals,269,9.4,42.3,15.8,9.7,vegetarian
+611,Paneer curry,Curry,251,17.4,34.2,14.4,8.8,all
+612,Pulao,Cereals,159,13.3,18.0,18.2,6.8,non_vegetarian
+613,Fruit salad,Fruit,446,2.5,57.2,1.1,9.1,vegetarian
+614,Chapati,Cereals,80,24.0,11.2,13.5,3.0,non_vegetarian
+615,Upma,Snacks,331,24.6,40.7,15.2,6.1,non_vegetarian
+616,Aloo paratha,Breakfast,405,15.6,34.6,4.0,3.7,non_vegetarian
+617,Biryani,Cereals,452,22.0,3.9,6.3,9.6,vegetarian
+618,Sambar,Curry,247,3.1,49.3,6.2,0.9,all
+619,Dal,Curry,349,10.0,41.9,9.1,2.8,vegetarian
+620,Idli,Breakfast,286,3.0,44.5,10.0,1.5,vegetarian
+621,Rice,Cereals,186,9.3,10.5,10.8,4.4,vegetarian
+622,Milk,Dairy,160,16.9,11.9,6.8,0.6,all
+623,Upma,Snacks,445,4.5,14.6,16.9,2.6,non_vegetarian
+624,Paneer curry,Curry,453,14.7,17.4,12.9,6.6,all
+625,Buttermilk,Dairy,292,5.5,27.9,2.1,2.9,all
+626,Kheer,Dessert,226,12.0,31.7,16.4,1.2,non_vegetarian
+627,Rajma,Curry,147,19.5,39.8,1.6,8.7,non_vegetarian
+628,Lassi,Dairy,235,7.1,0.4,4.6,5.0,all
+629,Chicken curry,Curry,84,15.6,21.6,8.8,7.8,vegetarian
+630,Idli,Breakfast,198,4.8,57.4,10.0,5.9,non_vegetarian
+631,Biryani,Cereals,225,2.2,25.6,12.4,2.4,all
+632,Poha,Breakfast,304,15.5,9.0,13.1,7.7,non_vegetarian
+633,Paneer curry,Curry,270,7.3,52.4,7.9,2.8,vegetarian
+634,Chapati,Cereals,221,16.6,52.3,9.8,9.8,non_vegetarian
+635,Vegetable salad,Salad,106,2.9,17.7,3.8,0.8,all
+636,Chole,Curry,175,1.2,14.1,4.5,1.3,vegetarian
+637,Pulao,Cereals,359,16.8,55.2,12.5,1.7,vegetarian
+638,Rasam,Curry,168,23.3,15.3,11.3,2.4,vegetarian
+639,Rice,Cereals,419,8.4,36.0,1.9,9.1,non_vegetarian
+640,Rajma,Curry,259,20.7,36.5,0.8,5.9,all
+641,Chapati,Cereals,318,28.1,59.9,13.0,7.8,non_vegetarian
+642,Chapati,Cereals,260,8.3,26.6,8.7,6.7,non_vegetarian
+643,Pav Bhaji,Snacks,239,1.1,39.5,17.0,9.8,vegetarian
+644,Oats porridge,Breakfast,294,15.5,1.3,5.1,9.9,non_vegetarian
+645,Fruit salad,Fruit,452,29.5,12.3,6.4,1.7,all
+646,Idli,Breakfast,313,14.6,27.1,11.4,3.2,vegetarian
+647,Methi paratha,Breakfast,227,25.4,39.1,1.5,7.7,vegetarian
+648,Halwa,Dessert,223,23.2,14.4,0.6,3.9,vegetarian
+649,Pav Bhaji,Snacks,356,18.8,11.7,0.4,5.7,non_vegetarian
+650,Dosa,Breakfast,354,10.9,4.6,1.5,9.5,all
+651,Biryani,Cereals,226,10.3,56.4,11.4,8.6,all
+652,Roti,Cereals,198,29.3,20.3,19.5,1.3,vegetarian
+653,Rasam,Curry,196,0.2,45.3,8.3,8.4,vegetarian
+654,Aloo paratha,Breakfast,359,9.3,6.2,3.6,1.8,non_vegetarian
+655,Curd,Dairy,280,16.4,49.4,4.3,8.8,all
+656,Aloo paratha,Breakfast,228,10.8,17.3,15.5,4.7,vegetarian
+657,Buttermilk,Dairy,391,25.3,6.1,4.6,4.8,vegetarian
+658,Kheer,Dessert,336,27.8,23.6,10.7,6.3,all
+659,Dal,Curry,109,13.6,54.2,11.5,6.2,non_vegetarian
+660,Poha,Breakfast,354,29.3,11.5,9.1,6.5,vegetarian
+661,Pakora,Snacks,253,6.1,22.1,14.1,7.5,vegetarian
+662,Paneer curry,Curry,240,16.2,52.4,1.8,5.9,all
+663,Chapati,Cereals,351,18.5,25.0,0.6,6.9,all
+664,Pav Bhaji,Snacks,102,15.2,2.4,5.8,3.4,non_vegetarian
+665,Paneer curry,Curry,167,11.1,11.3,11.4,8.7,non_vegetarian
+666,Chicken curry,Curry,218,10.9,3.7,18.7,1.9,vegetarian
+667,Paneer curry,Curry,478,3.4,22.5,17.5,6.2,vegetarian
+668,Lassi,Dairy,70,28.3,26.7,14.6,2.9,non_vegetarian
+669,Chapati,Cereals,328,21.3,35.8,12.9,4.8,all
+670,Dal,Curry,393,6.8,6.2,15.1,9.8,all
+671,Roti,Cereals,90,8.1,29.3,15.2,6.9,all
+672,Dal,Curry,265,17.2,31.2,7.9,2.5,non_vegetarian
+673,Upma,Snacks,373,19.3,48.5,8.0,9.7,vegetarian
+674,Buttermilk,Dairy,282,26.1,52.3,15.4,9.0,vegetarian
+675,Halwa,Dessert,437,14.1,35.0,3.1,9.3,non_vegetarian
+676,Lassi,Dairy,150,25.2,23.0,17.1,2.3,non_vegetarian
+677,Fruit salad,Fruit,487,1.4,50.5,0.6,0.5,non_vegetarian
+678,Biryani,Cereals,475,9.2,58.1,3.3,2.4,vegetarian
+679,Chapati,Cereals,259,23.8,42.9,15.6,3.1,all
+680,Halwa,Dessert,133,1.6,48.4,9.1,3.3,all
+681,Samosa,Snacks,322,8.8,12.1,17.3,8.5,vegetarian
+682,Dosa,Breakfast,401,0.2,5.6,14.5,5.6,vegetarian
+683,Chicken curry,Curry,261,29.8,30.2,3.5,7.3,non_vegetarian
+684,Chapati,Cereals,284,24.2,54.8,19.7,6.9,vegetarian
+685,Dal,Curry,92,14.6,4.8,10.5,4.0,non_vegetarian
+686,Milk,Dairy,86,8.6,23.6,9.5,7.5,non_vegetarian
+687,Lassi,Dairy,56,26.9,8.6,8.3,2.7,non_vegetarian
+688,Chole,Curry,239,25.4,45.3,2.5,5.0,vegetarian
+689,Dal,Curry,490,8.4,46.2,2.8,1.4,non_vegetarian
+690,Dal,Curry,341,25.5,42.1,4.1,4.9,vegetarian
+691,Chole,Curry,333,10.7,52.4,1.5,5.1,all
+692,Chole,Curry,419,16.3,44.4,5.3,1.2,vegetarian
+693,Fruit salad,Fruit,123,24.7,52.0,1.9,3.9,vegetarian
+694,Pav Bhaji,Snacks,102,11.4,57.4,9.1,1.9,non_vegetarian
+695,Chicken curry,Curry,430,11.2,52.3,12.5,4.2,vegetarian
+696,Rice,Cereals,211,1.8,9.8,16.3,8.1,non_vegetarian
+697,Chicken curry,Curry,124,25.9,0.6,7.2,6.8,non_vegetarian
+698,Kheer,Dessert,119,27.0,10.3,19.8,7.3,vegetarian
+699,Halwa,Dessert,97,29.2,36.9,2.2,8.6,all
+700,Halwa,Dessert,131,24.0,19.6,11.2,0.6,vegetarian
+701,Rice,Cereals,190,24.5,25.5,17.1,4.6,vegetarian
+702,Curd,Dairy,217,7.4,11.0,2.4,7.0,all
+703,Roti,Cereals,200,10.0,54.5,17.1,0.2,all
+704,Dal,Curry,490,25.3,28.7,19.8,3.8,all
+705,Halwa,Dessert,141,14.8,14.4,3.1,1.5,non_vegetarian
+706,Sambar,Curry,376,16.8,8.7,14.4,6.7,non_vegetarian
+707,Samosa,Snacks,63,3.5,30.4,17.3,4.2,vegetarian
+708,Vegetable salad,Salad,259,22.5,58.1,6.5,5.3,vegetarian
+709,Biryani,Cereals,230,23.8,57.0,11.3,3.0,non_vegetarian
+710,Chapati,Cereals,131,6.1,48.7,12.5,1.1,vegetarian
+711,Methi paratha,Breakfast,407,26.1,12.5,16.9,6.4,non_vegetarian
+712,Pulao,Cereals,336,18.5,22.5,2.1,10.0,all
+713,Paneer curry,Curry,432,27.8,34.1,14.7,5.1,non_vegetarian
+714,Rajma,Curry,192,3.0,25.2,1.1,5.8,non_vegetarian
+715,Buttermilk,Dairy,210,3.3,41.7,19.4,3.0,vegetarian
+716,Dosa,Breakfast,100,19.9,52.6,17.1,9.0,vegetarian
+717,Curd,Dairy,462,4.9,4.2,3.0,4.7,all
+718,Vegetable salad,Salad,93,12.6,43.2,0.9,9.5,all
+719,Rasam,Curry,108,15.3,17.3,14.8,4.6,vegetarian
+720,Idli,Breakfast,464,2.1,13.4,9.7,9.8,all
+721,Vegetable salad,Salad,500,0.9,34.4,14.4,10.0,non_vegetarian
+722,Pav Bhaji,Snacks,466,28.9,33.4,13.8,9.2,all
+723,Upma,Snacks,427,13.7,39.1,4.6,5.3,non_vegetarian
+724,Lassi,Dairy,439,5.3,53.4,17.3,6.7,non_vegetarian
+725,Fruit salad,Fruit,299,19.3,18.7,12.0,4.6,non_vegetarian
+726,Roti,Cereals,494,20.6,58.1,0.1,5.7,non_vegetarian
+727,Chole,Curry,109,14.1,36.3,12.7,3.4,all
+728,Curd,Dairy,58,26.7,13.5,5.1,5.2,vegetarian
+729,Idli,Breakfast,421,27.8,48.9,19.5,7.2,all
+730,Curd,Dairy,372,2.0,42.9,6.7,0.5,non_vegetarian
+731,Rice,Cereals,222,25.1,18.2,13.9,3.9,all
+732,Dosa,Breakfast,251,1.5,45.9,1.4,9.5,non_vegetarian
+733,Fruit salad,Fruit,313,5.2,21.9,16.9,8.7,non_vegetarian
+734,Lassi,Dairy,427,9.3,24.3,7.4,4.1,non_vegetarian
+735,Idli,Breakfast,179,6.6,49.9,8.2,9.2,all
+736,Paneer curry,Curry,255,3.9,44.7,9.8,1.7,all
+737,Curd,Dairy,351,14.2,31.0,4.5,8.6,all
+738,Pakora,Snacks,183,5.8,13.5,4.6,2.9,vegetarian
+739,Roti,Cereals,376,14.8,40.8,7.5,0.6,vegetarian
+740,Paneer curry,Curry,303,16.9,56.8,5.8,8.7,all
+741,Methi paratha,Breakfast,180,25.9,39.9,14.2,2.7,non_vegetarian
+742,Sambar,Curry,323,3.5,16.2,6.3,2.5,non_vegetarian
+743,Chapati,Cereals,368,1.4,1.7,17.4,2.1,all
+744,Milk,Dairy,494,29.5,53.2,7.8,0.2,non_vegetarian
+745,Idli,Breakfast,380,15.4,46.6,3.1,3.8,all
+746,Oats porridge,Breakfast,360,20.9,21.3,3.5,2.3,vegetarian
+747,Fruit salad,Fruit,161,23.1,43.4,1.4,9.5,all
+748,Dal,Curry,206,1.2,46.2,16.5,1.6,all
+749,Aloo paratha,Breakfast,55,14.3,50.2,17.5,8.0,vegetarian
+750,Upma,Snacks,393,5.4,32.7,10.5,2.8,vegetarian
+751,Dal,Curry,159,11.3,20.2,19.8,7.6,all
+752,Chapati,Cereals,178,2.3,23.7,10.2,7.7,vegetarian
+753,Rasam,Curry,369,23.9,11.4,7.1,9.4,vegetarian
+754,Pakora,Snacks,251,5.0,36.9,7.3,7.5,non_vegetarian
+755,Samosa,Snacks,305,10.4,26.2,5.6,9.4,all
+756,Oats porridge,Breakfast,210,10.4,32.6,14.2,8.2,vegetarian
+757,Poha,Breakfast,235,13.9,46.7,8.8,4.4,non_vegetarian
+758,Curd,Dairy,100,3.3,54.9,17.8,6.2,vegetarian
+759,Aloo paratha,Breakfast,152,12.8,24.6,13.3,6.1,all
+760,Milk,Dairy,386,28.8,26.4,12.9,3.1,non_vegetarian
+761,Kheer,Dessert,150,15.8,10.7,9.3,2.9,non_vegetarian
+762,Fruit salad,Fruit,212,25.3,22.8,4.3,1.7,non_vegetarian
+763,Chapati,Cereals,440,25.3,22.5,4.2,8.7,vegetarian
+764,Poha,Breakfast,178,20.6,34.7,3.7,6.5,vegetarian
+765,Oats porridge,Breakfast,71,3.0,56.1,12.7,9.2,non_vegetarian
+766,Paneer curry,Curry,368,20.5,37.9,1.3,0.7,all
+767,Dosa,Breakfast,305,4.0,40.0,0.0,1.4,vegetarian
+768,Pav Bhaji,Snacks,155,26.1,6.8,8.8,5.6,non_vegetarian
+769,Fruit salad,Fruit,355,8.3,11.7,14.4,3.5,vegetarian
+770,Dosa,Breakfast,453,28.9,49.7,1.1,8.0,all
+771,Milk,Dairy,263,9.3,11.4,2.5,9.8,all
+772,Dosa,Breakfast,181,14.0,57.0,16.4,6.8,all
+773,Kheer,Dessert,486,22.8,23.9,7.3,4.6,all
+774,Vegetable salad,Salad,140,3.8,5.0,2.1,7.9,non_vegetarian
+775,Methi paratha,Breakfast,446,20.2,53.0,10.7,3.3,vegetarian
+776,Lassi,Dairy,472,12.4,53.0,15.4,5.0,vegetarian
+777,Milk,Dairy,394,28.3,30.3,1.9,5.4,vegetarian
+778,Dal,Curry,108,10.9,49.5,7.8,0.9,all
+779,Rice,Cereals,194,12.2,47.7,9.7,6.1,non_vegetarian
+780,Methi paratha,Breakfast,143,16.3,16.8,0.3,4.6,vegetarian
+781,Dosa,Breakfast,292,10.7,46.0,13.9,9.6,non_vegetarian
+782,Kheer,Dessert,160,12.9,7.8,0.5,2.3,non_vegetarian
+783,Buttermilk,Dairy,217,27.1,47.3,14.0,7.3,non_vegetarian
+784,Kheer,Dessert,240,3.7,6.5,19.8,5.8,all
+785,Dal,Curry,83,20.9,54.2,14.4,8.2,non_vegetarian
+786,Lassi,Dairy,283,10.9,5.3,9.9,6.0,all
+787,Paneer curry,Curry,447,9.0,57.0,18.8,0.1,vegetarian
+788,Vegetable salad,Salad,379,26.8,57.2,15.3,5.7,non_vegetarian
+789,Sambar,Curry,482,10.0,28.9,9.4,0.3,vegetarian
+790,Rajma,Curry,407,23.2,27.5,5.9,8.5,all
+791,Chole,Curry,480,27.9,27.2,0.4,4.0,vegetarian
+792,Roti,Cereals,338,22.9,28.9,6.3,9.3,all
+793,Methi paratha,Breakfast,467,6.4,33.4,4.4,0.6,vegetarian
+794,Oats porridge,Breakfast,160,16.1,52.6,19.0,1.3,non_vegetarian
+795,Vegetable salad,Salad,242,14.0,4.2,12.4,0.3,vegetarian
+796,Samosa,Snacks,483,19.1,12.5,7.9,0.8,all
+797,Vegetable salad,Salad,404,29.6,25.3,11.3,2.5,non_vegetarian
+798,Vegetable salad,Salad,315,9.6,24.0,6.7,8.3,non_vegetarian
+799,Pav Bhaji,Snacks,310,18.8,1.8,13.7,1.4,vegetarian
+800,Rice,Cereals,285,0.9,28.4,0.2,9.9,all
+801,Aloo paratha,Breakfast,392,12.2,42.5,2.1,8.0,vegetarian
+802,Buttermilk,Dairy,330,10.3,11.7,4.5,6.3,vegetarian
+803,Rasam,Curry,465,15.4,1.3,8.7,8.5,all
+804,Halwa,Dessert,228,28.4,8.0,14.2,8.7,all
+805,Pav Bhaji,Snacks,166,29.2,1.7,4.6,9.9,vegetarian
+806,Lassi,Dairy,197,3.5,44.7,15.4,8.3,vegetarian
+807,Chole,Curry,90,25.9,15.3,16.8,4.6,non_vegetarian
+808,Oats porridge,Breakfast,467,11.1,17.8,14.9,0.2,vegetarian
+809,Chole,Curry,157,11.0,10.6,12.0,1.7,vegetarian
+810,Methi paratha,Breakfast,60,8.3,26.8,14.7,8.8,vegetarian
+811,Rajma,Curry,440,24.8,19.8,10.5,5.5,all
+812,Samosa,Snacks,314,3.4,46.1,4.7,1.6,non_vegetarian
+813,Methi paratha,Breakfast,164,20.4,38.7,2.0,0.3,vegetarian
+814,Methi paratha,Breakfast,257,13.2,6.2,1.2,0.9,non_vegetarian
+815,Upma,Snacks,287,4.9,37.9,6.3,4.3,all
+816,Milk,Dairy,376,25.0,25.1,6.9,8.8,vegetarian
+817,Upma,Snacks,321,18.8,11.8,18.3,5.0,non_vegetarian
+818,Rajma,Curry,443,26.1,47.2,16.7,1.7,vegetarian
+819,Milk,Dairy,464,6.0,25.5,10.2,2.9,vegetarian
+820,Chole,Curry,170,17.7,59.4,8.5,2.4,vegetarian
+821,Paneer curry,Curry,440,19.7,28.4,4.8,7.9,all
+822,Fruit salad,Fruit,437,9.2,2.9,8.8,9.4,all
+823,Idli,Breakfast,384,14.4,6.8,6.4,6.7,all
+824,Rasam,Curry,254,13.7,34.6,5.7,3.8,vegetarian
+825,Oats porridge,Breakfast,444,28.4,7.7,15.0,0.2,vegetarian
+826,Poha,Breakfast,378,2.2,0.7,9.9,6.9,vegetarian
+827,Pav Bhaji,Snacks,335,24.1,1.1,15.0,4.8,non_vegetarian
+828,Idli,Breakfast,92,25.9,21.5,0.8,3.6,non_vegetarian
+829,Samosa,Snacks,136,15.8,12.0,14.1,5.5,non_vegetarian
+830,Sambar,Curry,237,24.2,57.0,13.9,6.6,non_vegetarian
+831,Dosa,Breakfast,126,12.0,42.8,14.4,8.0,all
+832,Buttermilk,Dairy,416,8.0,28.1,5.4,3.5,all
+833,Curd,Dairy,433,20.2,26.6,14.0,5.7,all
+834,Dosa,Breakfast,213,27.1,37.1,7.0,5.0,vegetarian
+835,Chicken curry,Curry,300,9.6,58.4,6.4,3.1,all
+836,Kheer,Dessert,239,15.0,12.7,4.7,5.9,all
+837,Pakora,Snacks,349,1.8,28.3,9.7,6.1,vegetarian
+838,Curd,Dairy,94,17.1,1.9,13.2,0.1,non_vegetarian
+839,Kheer,Dessert,493,5.5,20.1,3.6,9.3,non_vegetarian
+840,Dal,Curry,270,15.7,12.9,14.5,9.6,non_vegetarian
+841,Samosa,Snacks,416,17.0,12.1,15.0,3.4,non_vegetarian
+842,Milk,Dairy,67,20.8,38.1,17.0,3.9,non_vegetarian
+843,Rice,Cereals,243,7.3,39.8,0.1,5.7,vegetarian
+844,Paneer curry,Curry,297,26.8,36.3,4.1,1.5,vegetarian
+845,Chicken curry,Curry,349,20.9,20.8,7.3,5.9,vegetarian
+846,Idli,Breakfast,435,13.9,17.6,0.4,5.7,vegetarian
+847,Fruit salad,Fruit,163,29.9,9.1,19.5,3.8,non_vegetarian
+848,Biryani,Cereals,225,1.3,23.4,7.9,8.8,all
+849,Idli,Breakfast,362,27.9,32.5,9.2,4.5,all
+850,Kheer,Dessert,467,25.6,5.5,4.2,8.3,vegetarian
+851,Poha,Breakfast,198,10.4,14.8,3.8,2.3,non_vegetarian
+852,Roti,Cereals,100,20.0,50.4,15.7,7.6,all
+853,Pakora,Snacks,146,13.5,14.5,14.9,8.1,non_vegetarian
+854,Rasam,Curry,186,10.0,38.3,10.0,3.1,all
+855,Dal,Curry,411,6.2,44.7,16.1,2.0,vegetarian
+856,Roti,Cereals,207,6.8,49.0,17.5,7.9,vegetarian
+857,Oats porridge,Breakfast,312,10.6,8.4,2.4,0.9,non_vegetarian
+858,Dosa,Breakfast,304,17.8,10.8,6.4,7.3,non_vegetarian
+859,Fruit salad,Fruit,421,16.7,56.6,7.3,7.3,non_vegetarian
+860,Biryani,Cereals,301,6.5,47.3,19.1,8.6,non_vegetarian
+861,Upma,Snacks,128,19.1,22.1,8.1,7.0,all
+862,Chapati,Cereals,252,24.5,33.6,0.7,9.6,non_vegetarian
+863,Pakora,Snacks,468,29.5,4.0,9.7,6.6,all
+864,Biryani,Cereals,432,13.9,58.2,9.4,4.7,vegetarian
+865,Milk,Dairy,444,15.0,6.2,6.1,10.0,all
+866,Aloo paratha,Breakfast,122,6.0,0.6,9.7,5.1,non_vegetarian
+867,Rajma,Curry,264,2.7,12.2,19.3,0.1,all
+868,Curd,Dairy,497,0.9,55.7,17.2,3.1,non_vegetarian
+869,Lassi,Dairy,198,26.4,45.5,0.2,3.8,non_vegetarian
+870,Rice,Cereals,82,22.1,8.0,2.4,9.1,vegetarian
+871,Methi paratha,Breakfast,227,22.7,32.7,2.8,7.3,non_vegetarian
+872,Roti,Cereals,190,29.3,46.5,1.1,1.5,non_vegetarian
+873,Rajma,Curry,410,18.4,48.3,2.4,9.5,vegetarian
+874,Sambar,Curry,330,7.5,48.4,10.4,0.1,all
+875,Chapati,Cereals,373,21.1,11.2,16.0,4.1,vegetarian
+876,Fruit salad,Fruit,146,19.2,7.7,13.5,4.1,vegetarian
+877,Rice,Cereals,316,0.8,25.9,9.0,4.7,non_vegetarian
+878,Buttermilk,Dairy,358,3.7,48.0,16.4,2.0,all
+879,Rice,Cereals,305,20.2,43.3,19.7,9.5,vegetarian
+880,Methi paratha,Breakfast,308,23.5,13.3,3.5,8.9,vegetarian
+881,Samosa,Snacks,384,21.7,19.9,12.6,2.8,vegetarian
+882,Lassi,Dairy,78,19.4,57.2,13.9,6.8,all
+883,Dal,Curry,224,3.3,39.1,19.6,2.8,vegetarian
+884,Rajma,Curry,135,9.6,59.4,19.6,2.7,non_vegetarian
+885,Rajma,Curry,58,8.9,46.0,3.9,8.1,vegetarian
+886,Biryani,Cereals,437,25.0,12.2,6.2,2.2,non_vegetarian
+887,Lassi,Dairy,467,2.5,22.5,1.3,8.8,all
+888,Dal,Curry,477,28.3,46.0,17.1,7.1,all
+889,Buttermilk,Dairy,129,21.6,57.9,3.6,7.3,vegetarian
+890,Idli,Breakfast,322,28.2,52.8,0.7,4.0,vegetarian
+891,Aloo paratha,Breakfast,460,4.8,55.7,0.8,8.3,non_vegetarian
+892,Vegetable salad,Salad,461,17.2,1.8,17.7,3.8,vegetarian
+893,Milk,Dairy,231,9.7,12.4,18.2,1.8,vegetarian
+894,Rice,Cereals,278,3.2,4.6,10.2,7.8,all
+895,Buttermilk,Dairy,284,20.6,10.8,18.9,4.3,all
+896,Rajma,Curry,111,4.6,26.7,5.5,1.6,vegetarian
+897,Poha,Breakfast,193,15.4,54.3,5.7,4.4,non_vegetarian
+898,Pav Bhaji,Snacks,354,29.8,50.8,14.4,6.3,all
+899,Pakora,Snacks,251,19.8,10.2,8.1,5.6,all
+900,Fruit salad,Fruit,454,21.0,23.9,1.3,1.8,vegetarian
+901,Curd,Dairy,470,22.3,53.5,18.3,8.2,all
+902,Oats porridge,Breakfast,363,5.4,51.1,14.5,5.1,vegetarian
+903,Poha,Breakfast,229,24.4,59.5,10.5,9.9,all
+904,Dal,Curry,50,15.4,27.5,3.7,0.9,all
+905,Halwa,Dessert,308,20.1,4.0,0.8,8.8,all
+906,Dosa,Breakfast,468,8.5,38.8,17.6,8.3,non_vegetarian
+907,Chicken curry,Curry,175,22.1,59.6,2.0,3.5,non_vegetarian
+908,Chapati,Cereals,282,29.0,58.4,12.8,5.9,all
+909,Poha,Breakfast,368,25.5,17.5,4.9,8.2,non_vegetarian
+910,Pakora,Snacks,319,9.1,52.7,7.8,8.2,vegetarian
+911,Curd,Dairy,453,12.2,18.5,16.0,7.9,all
+912,Idli,Breakfast,456,6.7,11.3,19.3,1.8,vegetarian
+913,Methi paratha,Breakfast,309,13.8,1.3,2.0,3.4,non_vegetarian
+914,Oats porridge,Breakfast,254,14.4,4.2,10.0,9.2,vegetarian
+915,Rajma,Curry,199,20.1,36.0,19.6,0.9,non_vegetarian
+916,Vegetable salad,Salad,252,0.3,24.0,14.1,8.3,vegetarian
+917,Rasam,Curry,494,13.6,55.8,5.4,4.8,vegetarian
+918,Roti,Cereals,392,6.3,13.2,19.9,2.7,all
+919,Chicken curry,Curry,82,15.1,40.9,1.9,1.4,vegetarian
+920,Dosa,Breakfast,255,29.7,19.2,13.8,9.9,non_vegetarian
+921,Idli,Breakfast,165,21.1,3.0,7.8,2.6,non_vegetarian
+922,Sambar,Curry,256,12.4,32.7,5.3,9.3,all
+923,Halwa,Dessert,302,23.6,11.6,7.9,9.7,non_vegetarian
+924,Buttermilk,Dairy,353,9.4,13.9,18.3,8.2,vegetarian
+925,Pav Bhaji,Snacks,472,25.1,40.8,4.7,5.3,vegetarian
+926,Chole,Curry,284,30.0,3.6,0.3,1.0,all
+927,Rasam,Curry,470,14.2,54.0,1.2,4.4,non_vegetarian
+928,Pulao,Cereals,80,11.4,30.7,6.1,4.0,vegetarian
+929,Rasam,Curry,104,17.3,12.5,14.8,1.9,non_vegetarian
+930,Lassi,Dairy,348,15.9,16.3,14.2,9.1,all
+931,Milk,Dairy,416,8.7,19.2,3.1,9.6,non_vegetarian
+932,Lassi,Dairy,116,25.8,32.0,19.2,6.5,all
+933,Curd,Dairy,268,12.4,14.2,17.5,7.3,all
+934,Biryani,Cereals,292,20.6,5.4,1.6,3.3,vegetarian
+935,Lassi,Dairy,319,25.1,50.7,6.2,1.8,all
+936,Paneer curry,Curry,283,27.2,51.1,18.0,3.7,vegetarian
+937,Idli,Breakfast,451,29.6,3.7,13.2,4.8,all
+938,Samosa,Snacks,144,19.0,57.5,17.3,1.2,all
+939,Aloo paratha,Breakfast,493,11.0,22.8,1.9,9.1,all
+940,Pav Bhaji,Snacks,107,29.3,46.2,19.9,5.6,non_vegetarian
+941,Methi paratha,Breakfast,344,2.9,30.9,10.8,7.4,vegetarian
+942,Methi paratha,Breakfast,134,14.4,28.7,17.8,8.0,non_vegetarian
+943,Pulao,Cereals,358,2.1,15.7,12.8,8.7,all
+944,Oats porridge,Breakfast,241,24.1,19.5,8.9,4.2,all
+945,Rice,Cereals,91,1.7,9.5,17.4,2.4,non_vegetarian
+946,Rice,Cereals,144,17.2,32.1,11.3,0.2,vegetarian
+947,Sambar,Curry,89,18.4,11.7,12.2,0.8,vegetarian
+948,Rajma,Curry,215,13.1,45.0,3.3,3.5,non_vegetarian
+949,Roti,Cereals,194,7.2,45.8,9.7,7.9,non_vegetarian
+950,Curd,Dairy,56,19.8,31.4,3.4,9.8,vegetarian
+951,Poha,Breakfast,379,28.9,6.2,3.0,0.9,non_vegetarian
+952,Paneer curry,Curry,205,3.0,0.5,7.6,9.6,all
+953,Pulao,Cereals,104,0.4,8.9,18.5,8.2,all
+954,Milk,Dairy,135,23.0,32.5,17.7,10.0,non_vegetarian
+955,Chapati,Cereals,283,4.1,7.4,0.1,7.5,all
+956,Dal,Curry,142,15.1,24.3,9.3,5.8,vegetarian
+957,Dosa,Breakfast,381,16.5,56.9,1.6,8.7,vegetarian
+958,Dosa,Breakfast,426,19.2,35.3,2.5,7.3,all
+959,Pulao,Cereals,435,25.7,6.2,7.8,3.8,non_vegetarian
+960,Sambar,Curry,408,19.2,21.2,11.2,8.4,all
+961,Lassi,Dairy,298,22.2,6.6,17.9,8.0,vegetarian
+962,Roti,Cereals,88,7.1,58.7,18.1,8.0,all
+963,Chicken curry,Curry,200,18.4,47.3,2.6,1.4,vegetarian
+964,Buttermilk,Dairy,162,28.5,34.7,13.7,5.9,all
+965,Rasam,Curry,438,25.4,16.8,6.7,0.5,non_vegetarian
+966,Rajma,Curry,63,29.6,53.3,17.8,2.0,non_vegetarian
+967,Fruit salad,Fruit,73,24.9,34.4,11.5,0.4,all
+968,Aloo paratha,Breakfast,131,14.1,25.4,11.0,2.8,vegetarian
+969,Buttermilk,Dairy,86,14.8,25.0,14.2,0.2,non_vegetarian
+970,Chole,Curry,250,17.8,24.9,9.7,9.6,non_vegetarian
+971,Sambar,Curry,467,5.2,46.6,14.8,7.8,vegetarian
+972,Paneer curry,Curry,211,6.2,25.7,13.3,7.1,non_vegetarian
+973,Pulao,Cereals,483,25.0,34.5,19.3,8.7,non_vegetarian
+974,Chapati,Cereals,209,23.5,27.6,1.2,0.7,all
+975,Samosa,Snacks,132,15.7,8.8,10.7,6.5,all
+976,Biryani,Cereals,369,11.8,14.4,0.3,6.1,non_vegetarian
+977,Aloo paratha,Breakfast,415,18.3,50.4,15.3,0.0,all
+978,Oats porridge,Breakfast,382,9.1,4.2,10.7,0.3,vegetarian
+979,Sambar,Curry,290,0.8,55.6,15.1,7.8,all
+980,Methi paratha,Breakfast,323,26.7,17.2,19.5,3.1,non_vegetarian
+981,Sambar,Curry,159,21.5,32.0,17.9,6.9,all
+982,Pulao,Cereals,312,7.5,44.9,2.0,0.9,all
+983,Dosa,Breakfast,494,27.6,13.1,8.9,0.5,non_vegetarian
+984,Samosa,Snacks,377,2.8,46.9,4.2,7.3,non_vegetarian
+985,Dal,Curry,305,28.2,54.0,5.6,0.4,non_vegetarian
+986,Roti,Cereals,374,2.4,22.2,4.7,8.5,non_vegetarian
+987,Milk,Dairy,308,13.0,10.8,1.2,10.0,non_vegetarian
+988,Pav Bhaji,Snacks,120,15.5,24.6,4.8,3.2,non_vegetarian
+989,Buttermilk,Dairy,470,21.4,9.4,19.2,7.1,non_vegetarian
+990,Aloo paratha,Breakfast,380,13.5,28.0,3.2,6.4,vegetarian
+991,Vegetable salad,Salad,54,16.6,37.0,12.1,0.3,all
+992,Chicken curry,Curry,329,18.9,50.8,4.4,7.6,all
+993,Rice,Cereals,200,16.2,6.5,15.4,0.5,vegetarian
+994,Pakora,Snacks,328,15.4,49.9,11.5,3.4,non_vegetarian
+995,Methi paratha,Breakfast,314,28.6,34.7,15.6,9.1,vegetarian
+996,Pav Bhaji,Snacks,479,2.4,17.1,17.5,9.6,non_vegetarian
+997,Chole,Curry,395,17.8,55.7,5.6,9.4,all
+998,Curd,Dairy,149,3.2,36.6,18.4,0.7,all
+999,Pav Bhaji,Snacks,346,26.6,25.9,18.6,6.0,vegetarian
+1000,Roti,Cereals,492,19.5,54.9,14.0,2.5,vegetarian
