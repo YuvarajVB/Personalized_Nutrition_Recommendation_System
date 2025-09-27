@@ -1,31 +1,29 @@
 # src/clinical_parser.py
 import pandas as pd
-def analyze_report(report):
+
+def analyze_report(report: pd.Series) -> str:
     """
-    Analyze a clinical report and return patient's status.
-    Supports diabetes (sugar patients) or normal.
+    Analyze a user's clinical report and return their clinical status.
+    Currently checks for diabetes based on standard thresholds.
+    
+    Args:
+        report (pd.Series): A row from clinical_reports CSV containing
+                            fasting_blood_sugar, postprandial_sugar, hba1c.
+    
+    Returns:
+        str: 'diabetes' or 'normal'
     """
-    # Normalize the report_type (handle sugar as diabetes)
-    report_type = str(report["report_type"]).strip().lower()
-    if report_type == "sugar":
-        report_type = "diabetes"
+    # Thresholds for diabetes
+    FBS_THRESHOLD = 126          # mg/dL
+    PPBS_THRESHOLD = 200         # mg/dL
+    HBA1C_THRESHOLD = 6.5        # %
 
-    if report_type == "diabetes":
-        fasting = report["fasting_blood_sugar"]
-        pp = report["postprandial_sugar"]
-        hba1c = report["hba1c"]
+    fasting = report.get("fasting_blood_sugar", 0)
+    postprandial = report.get("postprandial_sugar", 0)
+    hba1c = report.get("hba1c", 0)
 
-        if fasting >= 126 or pp >= 200 or hba1c >= 6.5:
-            return "diabetes"
-        else:
-            return "normal"
-    else:
-        return "normal"
-
-
-if __name__ == "__main__":
-    # Example run
-    reports = pd.read_csv("data/clinical_reports_sample.csv")
-    for _, row in reports.iterrows():
-        status = analyze_report(row)
-        print(f"User {row['user_id']} → {status}")
+    # If any value crosses threshold, classify as diabetes
+    if fasting >= FBS_THRESHOLD or postprandial >= PPBS_THRESHOLD or hba1c >= HBA1C_THRESHOLD:
+        return "diabetes"
+    
+    return "normal"

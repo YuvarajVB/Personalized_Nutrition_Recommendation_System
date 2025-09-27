@@ -1,163 +1,91 @@
 # src/recommendation.py
 import pandas as pd
 import random
+import joblib
+from pathlib import Path
+from src.clinical_parser import analyze_report
 
-# ---------------------------
-# Helper functions
-# ---------------------------
-def calculate_bmr(weight, height, age, gender):
-    """Calculate BMR using Mifflin-St Jeor formula"""
-    if gender.upper() == "M":
-        return 10 * weight + 6.25 * height - 5 * age + 5
-    else:
-        return 10 * weight + 6.25 * height - 5 * age - 161
+# Paths
+DATA_DIR = Path(__file__).resolve().parent.parent / "data"
+FOODS_PATH = DATA_DIR / "foods.csv"
+USERS_PATH = DATA_DIR / "users.csv"
+REPORTS_PATH = DATA_DIR / "clinical_reports.csv"
+ML_MODEL_PATH = Path(__file__).resolve().parent.parent / "models" / "calorie_macro_predictor_lgbm.pkl"
 
-def get_activity_multiplier(level):
-    """Return activity multiplier for TDEE"""
-    return {'low': 1.2, 'medium': 1.55, 'high': 1.725}.get(level.lower(), 1.2)
-
-def analyze_report(report):
-    """Simple rule-based clinical analysis"""
-    if report.get("blood_sugar_fasting", 0) > 126:
-        return "diabetes"
-    return "normal"
-
-# ---------------------------
 # Load datasets
-# ---------------------------
-foods = pd.read_csv("data/foods.csv")
-users = pd.read_csv("data/users_sample.csv")
-reports = pd.read_csv("data/clinical_reports_sample.csv")
+foods_df = pd.read_csv(FOODS_PATH)
+reports_df = pd.read_csv(REPORTS_PATH)
+ml_model = joblib.load(ML_MODEL_PATH)
 
-# ---------------------------
-# Function: Recommend meal
-# ---------------------------
-def recommend_meal(user, report, foods):
-    # 1. Clinical status
-    clinical_status = analyze_report(report)
+def generate_recommendations_for_user(user_id: int):
+    """
+    Generate meal plan for a user by ID.
+    
+    Returns:
+        plan_df (pd.DataFrame): Recommended foods
+        total_calories (float): Total calories in plan
+        meta (dict): Additional info like predicted calories & clinical status
+    """
+    # Load user info
+    users_df = pd.read_csv(USERS_PATH)
+    user = users_df[users_df["user_id"] == user_id].iloc[0]
 
-    # 2. Calculate calorie needs
-    bmr = calculate_bmr(user["weight_kg"], user["height_cm"], user["age"], user["gender"])
-    activity_factor = get_activity_multiplier(user["activity_level"])
-    calorie_target = bmr * activity_factor
+    # Load clinical report if exists
+    report = reports_df[reports_df["user_id"] == user_id]
+    if not report.empty:
+        report = report.iloc[0]
+        clinical_status = analyze_report(report)
+    else:
+        clinical_status = "normal"
 
+    # Prepare features for ML model
+    features = pd.DataFrame([{
+        "age": user["age"],
+        "gender": 1 if user["gender"].lower() == "m" else 0,
+        "height_cm": user["height_cm"],
+        "weight_kg": user["weight_kg"],
+        "activity_level": 1 if user["activity_level"].lower() == "sedentary" else 2  # encode activity
+    }])
+
+    # Predict calorie target
+    predicted_calories = ml_model.predict(features)[0]
+
+    # Adjust based on goal
     if user["goal"] == "weight_loss":
-        calorie_target -= 500
+        predicted_calories -= 500
     elif user["goal"] == "weight_gain":
-        calorie_target += 500
+        predicted_calories += 500
 
-    # 3. Macro targets
-    protein_target = (0.2 * calorie_target) / 4
-    carb_target = (0.5 * calorie_target) / 4
-    fat_target = (0.3 * calorie_target) / 9
+    # Macro targets
+    protein_target = 0.2 * predicted_calories / 4
+    carb_target = 0.5 * predicted_calories / 4
+    fat_target = 0.3 * predicted_calories / 9
 
-    # 4. Apply diabetic filters
-    filtered_foods = foods.copy()
+    # Filter foods if diabetic
+    available_foods = foods_df.copy()
     if clinical_status == "diabetes":
-        filtered_foods = filtered_foods[~filtered_foods["food_name"].str.contains(
-            "sweet|sugar|dessert|candy|soft drink|juice|white rice", case=False
-        )]
-        filtered_foods = filtered_foods[filtered_foods["fiber"] >= 2]
+        available_foods = available_foods[~available_foods["food_name"].str.contains(
+            "sweet|sugar|dessert|candy|soft drink|juice|white rice", case=False)]
+        available_foods = available_foods[available_foods["fiber"] >= 2]
 
-    # 5. Split calorie targets by meal
-    meal_split = {'Breakfast': 0.25, 'Lunch': 0.35, 'Dinner': 0.25, 'Snacks': 0.15}
-    daily_meals = {}
-    total_calories = 0
+    # Build meal plan
+    meal_plan = []
+    total_cal = 0
+    while total_cal < predicted_calories * 0.95:
+        food = available_foods.sample(1).iloc[0]
+        meal_plan.append(food)
+        total_cal += food["calories"]
+        if len(meal_plan) > 15:  # safety
+            break
 
-    for meal, fraction in meal_split.items():
-        meal_cal_target = calorie_target * fraction
-        meal_foods = []
-        meal_cal = 0
+    plan_df = pd.DataFrame(meal_plan)
 
-        while meal_cal < meal_cal_target:
-            food = filtered_foods.sample(1).iloc[0]
-
-            # Portion adjustment if food exceeds remaining calories
-            remaining_cal = meal_cal_target - meal_cal
-            if food["calories"] > remaining_cal:
-                # Add proportionally
-                meal_foods.append({
-                    "food_name": food["food_name"],
-                    "calories": remaining_cal
-                })
-                meal_cal += remaining_cal
-                break
-            else:
-                meal_foods.append({
-                    "food_name": food["food_name"],
-                    "calories": food["calories"]
-                })
-                meal_cal += food["calories"]
-
-            if len(meal_foods) > 10:  # safety check
-                break
-
-        daily_meals[meal] = meal_foods
-        total_calories += meal_cal
-
-    return {
-        "user": user["name"],
-        "clinical_status": clinical_status,
-        "calorie_target": round(calorie_target),
+    meta = {
+        "user_calorie_target": round(predicted_calories),
         "protein_target": round(protein_target),
         "carb_target": round(carb_target),
         "fat_target": round(fat_target),
-        "meal_plan": daily_meals,
-        "total_calories": round(total_calories)
+        "clinical_status": clinical_status
     }
 
-# ---------------------------
-# Run example
-# ---------------------------
-if __name__ == "__main__":
-    user = users.iloc[0]
-    report = reports[reports["user_id"] == user["user_id"]].iloc[0]
-
-    result = recommend_meal(user, report, foods)
-
-    # Print results
-    print(f"\nRecommended diet for {result['user']} ({result['clinical_status']} patient):")
-    print("Calorie target:", result["calorie_target"])
-    print("Protein target:", result["protein_target"], "g")
-    print("Carb target:", result["carb_target"], "g")
-    print("Fat target:", result["fat_target"], "g")
-    print("\n--- Meal Plan ---")
-    for meal, items in result["meal_plan"].items():
-        print(f"\n{meal}:")
-        for item in items:
-            print(f"- {item['food_name']} ({round(item['calories'])} kcal)")
-    print("\nTotal Calories:", result["total_calories"])
-    # ---------------------------
-# Function to match run_batch.py
-# ---------------------------
-def generate_meal_plan_by_user_id(user_id, mode="auto"):
-    """
-    Wrapper to generate a meal plan for a given user_id.
-    Returns: (plan_df, total_calories, meta)
-    """
-    # Fetch user and report
-    user = users[users["user_id"] == user_id].iloc[0]
-    report = reports[reports["user_id"] == user_id].iloc[0]
-
-    # Generate meal plan
-    result = recommend_meal(user, report, foods)
-
-    # Convert meal plan dict to DataFrame
-    plan_rows = []
-    for meal, items in result["meal_plan"].items():
-        for item in items:
-            plan_rows.append({
-                "meal": meal,
-                "food_name": item["food_name"],
-                "calories": round(item["calories"])
-            })
-    plan_df = pd.DataFrame(plan_rows)
-
-    # Meta information
-    meta = {
-        "user_calorie_target": result["calorie_target"],
-        "clinical_status": result["clinical_status"]
-    }
-
-    return plan_df, result["total_calories"], meta
-
+    return plan_df, total_cal, meta
