@@ -1,0 +1,2 @@
+user_id,name,age,gender,goal,predicted_value,recommended_meals
+157,User157,28,F,muscle_gain,1.54,"[{'meal': 'Breakfast', 'items': ['Oatmeal', 'Boiled eggs', 'Fruit']}, {'meal': 'Lunch', 'items': ['Grilled chicken', 'Brown rice', 'Salad']}, {'meal': 'Dinner', 'items': ['Fish', 'Quinoa', 'Vegetables']}]"

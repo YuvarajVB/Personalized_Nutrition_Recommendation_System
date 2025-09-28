@@ -1,0 +1,2 @@
+user_id,name,age,gender,goal,predicted_value,recommended_meals
+422,User422,58,F,maintain,0.94,"[{'meal': 'Breakfast', 'items': ['Oatmeal', 'Boiled eggs', 'Fruit']}, {'meal': 'Lunch', 'items': ['Grilled chicken', 'Brown rice', 'Salad']}, {'meal': 'Dinner', 'items': ['Fish', 'Quinoa', 'Vegetables']}]"

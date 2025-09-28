@@ -1,29 +1,39 @@
-# src/clinical_parser.py
 import pandas as pd
 
-def analyze_report(report: pd.Series) -> str:
+def analyze_report(report_path):
     """
-    Analyze a user's clinical report and return their clinical status.
-    Currently checks for diabetes based on standard thresholds.
-    
-    Args:
-        report (pd.Series): A row from clinical_reports CSV containing
-                            fasting_blood_sugar, postprandial_sugar, hba1c.
-    
-    Returns:
-        str: 'diabetes' or 'normal'
+    Analyze a diabetes clinical report CSV for a single user.
+    Assumes columns: fasting_blood_sugar, postprandial_sugar, hba1c
+    Returns a dict with risk and notes.
     """
-    # Thresholds for diabetes
-    FBS_THRESHOLD = 126          # mg/dL
-    PPBS_THRESHOLD = 200         # mg/dL
-    HBA1C_THRESHOLD = 6.5        # %
+    try:
+        df = pd.read_csv(report_path)
+    except Exception as e:
+        return {"error": f"Failed to read report: {e}"}
 
-    fasting = report.get("fasting_blood_sugar", 0)
-    postprandial = report.get("postprandial_sugar", 0)
-    hba1c = report.get("hba1c", 0)
+    # Simple diabetes risk check
+    risk = "Low"
+    notes = []
 
-    # If any value crosses threshold, classify as diabetes
-    if fasting >= FBS_THRESHOLD or postprandial >= PPBS_THRESHOLD or hba1c >= HBA1C_THRESHOLD:
-        return "diabetes"
-    
-    return "normal"
+    if "fasting_blood_sugar" in df.columns:
+        fbs = df["fasting_blood_sugar"].iloc[0]
+        if fbs > 126:
+            risk = "High"
+            notes.append(f"High fasting blood sugar: {fbs}")
+
+    if "postprandial_sugar" in df.columns:
+        pps = df["postprandial_sugar"].iloc[0]
+        if pps > 200:
+            risk = "High"
+            notes.append(f"High postprandial sugar: {pps}")
+
+    if "hba1c" in df.columns:
+        hba1c = df["hba1c"].iloc[0]
+        if hba1c > 6.5:
+            risk = "High"
+            notes.append(f"High HbA1c: {hba1c}")
+
+    if not notes:
+        notes.append("All readings normal")
+
+    return {"risk": risk, "notes": notes}
