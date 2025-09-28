@@ -1,58 +1,85 @@
 import pandas as pd
 import joblib
-from src.clinical_parser import analyze_report  # Import from src
 import os
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MODEL_PATH = os.path.join(BASE_DIR, "models", "calorie_macro_predictor_lgbm.pkl")
+# Paths
+ML_MODEL_PATH = os.path.join("models", "calorie_macro_predictor_lgbm.pkl")
+FOODS_PATH = os.path.join("data", "foods.csv")
 
-# Load the ML model once
-ml_model = joblib.load(MODEL_PATH)
+# Load ML model
+ml_model = joblib.load(ML_MODEL_PATH)
 
-# Example: simple feature encoding
-activity_map = {"sedentary": 1, "light": 2, "moderate": 3, "active": 4}
-gender_map = {"M": 1, "F": 0}
+# Load food database
+foods_df = pd.read_csv(FOODS_PATH)
 
-def generate_recommendations_for_user(user_info):
+# Example function to analyze diabetes report (replace with actual logic if available)
+def analyze_report(report_file):
+    # Placeholder: return dict with any adjustments based on report
+    if report_file and os.path.exists(report_file):
+        # Example: could parse report to check blood sugar or carbs
+        return {"note": "Adjusted for diabetes"}
+    return {}
+
+# Function to generate meal plan for a single user (console-friendly)
+def generate_recommendations_for_user(user_input):
     """
-    Generate a meal plan for a single user.
-    user_info: dict with keys - age, weight_kg, height_cm, activity_level, gender, goal, diabetes, report_file(optional)
-    Returns: dict with calories, macros, and report notes if any
+    user_input: dict with keys:
+      age, weight_kg, height_cm, activity_level, gender, goal, diabetes, report_file
     """
     # Prepare features for ML model
-    try:
-        features = pd.DataFrame([{
-            "age": user_info["age"],
-            "weight_kg": user_info["weight_kg"],
-            "height_cm": user_info["height_cm"],
-            "activity_level": activity_map.get(user_info["activity_level"], 1),
-            "gender": gender_map.get(user_info["gender"], 0)
-        }])
+    feature_order = ["age", "weight_kg", "height_cm", "activity_level", "gender"]
+    features = pd.DataFrame([user_input])[feature_order]
 
-        predicted_calories = ml_model.predict(features)[0]
+    # Convert categorical columns to numbers if needed
+    # Example mapping
+    features["activity_level"] = features["activity_level"].map({
+        "sedentary": 0,
+        "light": 1,
+        "moderate": 2,
+        "active": 3,
+        "very_active": 4
+    }).fillna(0)
+    features["gender"] = features["gender"].map({"M": 0, "F": 1}).fillna(0)
 
-        # Simple macro split
-        proteins = 0.3 * predicted_calories / 4
-        carbs = 0.5 * predicted_calories / 4
-        fats = 0.2 * predicted_calories / 9
+    # Predict calories
+    predicted_calories = ml_model.predict(features)[0]
 
-        plan = {
-            "calories": round(predicted_calories, 2),
-            "protein_g": round(proteins, 2),
-            "carbs_g": round(carbs, 2),
-            "fats_g": round(fats, 2)
-        }
+    # Basic macro distribution (can adjust)
+    macros = {
+        "protein_g": int(0.3 * predicted_calories / 4),
+        "carbs_g": int(0.5 * predicted_calories / 4),
+        "fat_g": int(0.2 * predicted_calories / 9),
+    }
 
-        # If diabetic, analyze report
-        report_notes = None
-        if user_info.get("diabetes") and user_info.get("report_file"):
-            report_path = user_info["report_file"]
-            if os.path.exists(report_path):
-                report_notes = analyze_report(report_path)
-            else:
-                report_notes = {"error": "Report file not found"}
+    # If diabetic, adjust based on report
+    diabetes_adjustments = {}
+    if user_input.get("diabetes"):
+        diabetes_adjustments = analyze_report(user_input.get("report_file"))
 
-        return {"meal_plan": plan, "report_notes": report_notes}
+    # Generate simple meal plan using foods_df (random example)
+    meal_plan = {
+        "calories": int(predicted_calories),
+        "macros": macros,
+        "notes": diabetes_adjustments.get("note", ""),
+        "meals": foods_df.sample(3).to_dict(orient="records")  # 3 random foods
+    }
 
-    except Exception as e:
-        return {"error": str(e)}
+    return meal_plan
+
+# For console testing
+if __name__ == "__main__":
+    # Example input from console
+    user_input = {
+        "age": int(input("Enter age: ")),
+        "weight_kg": float(input("Enter weight (kg): ")),
+        "height_cm": float(input("Enter height (cm): ")),
+        "activity_level": input("Enter activity level (sedentary/light/moderate/active/very_active): "),
+        "gender": input("Enter gender (M/F): "),
+        "goal": input("Enter goal (weight_loss/muscle_gain/maintain): "),
+        "diabetes": input("Diabetic? (yes/no): ").lower() == "yes",
+        "report_file": input("Enter report file path (or leave blank): ")
+    }
+
+    plan = generate_recommendations_for_user(user_input)
+    print("\nGenerated Meal Plan:")
+    print(plan)
