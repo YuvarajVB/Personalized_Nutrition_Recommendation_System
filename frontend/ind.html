@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Meal Plan Generator</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        input, select { margin-bottom: 10px; display: block; padding: 5px; width: 250px; }
+        button { padding: 8px 15px; }
+        #output { margin-top: 20px; white-space: pre-wrap; background: #f4f4f4; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Meal Plan Generator</h1>
+
+    <form id="mealForm">
+        <input type="number" name="age" placeholder="Age" required>
+        <input type="number" name="weight_kg" placeholder="Weight (kg)" required>
+        <input type="number" name="height_cm" placeholder="Height (cm)" required>
+
+        <label>Activity Level:</label>
+        <select name="activity_level" required>
+            <option value="sedentary">Sedentary</option>
+            <option value="light">Light</option>
+            <option value="moderate">Moderate</option>
+            <option value="active">Active</option>
+            <option value="very_active">Very Active</option>
+        </select>
+
+        <label>Gender:</label>
+        <select name="gender" required>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select>
+
+        <label>Goal:</label>
+        <select name="goal" required>
+            <option value="weight_loss">Weight Loss</option>
+            <option value="muscle_gain">Muscle Gain</option>
+            <option value="maintain">Maintain</option>
+        </select>
+
+        <label>Diabetic?</label>
+        <select name="diabetes" required>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+
+        <label>Upload Report (if diabetic):</label>
+        <input type="file" name="report_file">
+
+        <button type="submit">Generate Meal Plan</button>
+    </form>
+
+    <div id="output"></div>
+
+    <script>
+        const form = document.getElementById('mealForm');
+        const output = document.getElementById('output');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+
+            // Convert select values
+            const data = {
+                age: parseInt(formData.get('age')),
+                weight_kg: parseFloat(formData.get('weight_kg')),
+                height_cm: parseFloat(formData.get('height_cm')),
+                activity_level: formData.get('activity_level'),
+                gender: formData.get('gender'),
+                goal: formData.get('goal'),
+                diabetes: formData.get('diabetes') === 'true',
+                report_file: null
+            };
+
+            const uploadFile = formData.get('report_file');
+
+            const fetchData = new FormData();
+            fetchData.append("user_input", new Blob([JSON.stringify(data)], { type: "application/json" }));
+            if (uploadFile && uploadFile.size > 0) {
+                fetchData.append("report", uploadFile);
+            }
+
+            try {
+                const response = await fetch("http://127.0.0.1:8000/generate_meal_plan", {
+                    method: "POST",
+                    body: fetchData
+                });
+
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+
+                const result = await response.json();
+                output.textContent = JSON.stringify(result, null, 2);
+            } catch (err) {
+                output.textContent = "Error: " + err.message;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,5 +1,7 @@
-from fastapi import FastAPI, UploadFile, File
-from pydantic import BaseModel
+from fastapi import FastAPI, UploadFile, File, Form
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
 import shutil
 import os
@@ -7,27 +9,37 @@ from src.recommendation import generate_recommendations_for_user
 
 app = FastAPI(title="Meal Plan API")
 
+# Enable CORS for frontend requests
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # you can restrict this to your frontend URL
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Serve frontend files
+app.mount("/static", StaticFiles(directory="frontend"), name="static")
+
 # Directory to temporarily save uploaded reports
 UPLOAD_DIR = "data/uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
-# Pydantic model for request body
-class UserInput(BaseModel):
-    age: int
-    weight_kg: float
-    height_cm: float
-    activity_level: str  # sedentary/light/moderate/active/very_active
-    gender: str  # M/F
-    goal: str  # weight_loss/muscle_gain/maintain
-    diabetes: bool
-    report_file: Optional[str] = None  # optional file path
-
 @app.get("/")
-def root():
-    return {"message": "Meal Plan API is running"}
+def read_index():
+    return FileResponse("frontend/ind.html")
 
 @app.post("/generate_meal_plan")
-async def generate_meal_plan(user_input: UserInput, report: Optional[UploadFile] = File(None)):
+async def generate_meal_plan(
+    age: int = Form(...),
+    weight_kg: float = Form(...),
+    height_cm: float = Form(...),
+    activity_level: str = Form(...),
+    gender: str = Form(...),
+    goal: str = Form(...),
+    diabetes: bool = Form(...),
+    report: Optional[UploadFile] = File(None)
+):
     # Save uploaded report file if provided
     report_path = None
     if report:
@@ -35,10 +47,21 @@ async def generate_meal_plan(user_input: UserInput, report: Optional[UploadFile]
         with open(report_path, "wb") as buffer:
             shutil.copyfileobj(report.file, buffer)
 
-    # Convert request body to dict
-    input_data = user_input.dict()
-    input_data["report_file"] = report_path
+    # Prepare input data for recommendation
+    input_data = {
+        "age": age,
+        "weight_kg": weight_kg,
+        "height_cm": height_cm,
+        "activity_level": activity_level,
+        "gender": gender,
+        "goal": goal,
+        "diabetes": diabetes,
+        "report_file": report_path,
+    }
 
-    # Generate meal plan
-    plan = generate_recommendations_for_user(input_data)
-    return plan
+    try:
+        # Generate meal plan
+        plan = generate_recommendations_for_user(input_data)
+        return JSONResponse(content=plan)
+    except Exception as e:
+        return JSONResponse(content={"error": str(e)}, status_code=500)
