@@ -1,33 +1,39 @@
 from fastapi import FastAPI, UploadFile, File, Form
-from fastapi.responses import FileResponse, JSONResponse
-from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from typing import Optional
 import shutil
 import os
+
 from src.recommendation import generate_recommendations_for_user
 
 app = FastAPI(title="Meal Plan API")
 
-# Enable CORS for frontend requests
+# Allow CORS (frontend can access API)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # you can restrict this to your frontend URL
-    allow_credentials=True,
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Serve frontend files
-app.mount("/static", StaticFiles(directory="frontend"), name="static")
+# ✅ Force absolute path for upload folder
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+UPLOAD_DIR = os.path.join(PROJECT_ROOT, "data", "uploads")
 
-# Directory to temporarily save uploaded reports
-UPLOAD_DIR = "data/uploads"
+# Force-create the upload directory
 os.makedirs(UPLOAD_DIR, exist_ok=True)
+print("✅ Upload directory path:", UPLOAD_DIR)
+
+# Serve static HTML
+STATIC_DIR = os.path.join(os.path.dirname(__file__), "static")
+app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
+
 
 @app.get("/")
-def read_index():
-    return FileResponse("frontend/ind.html")
+def home():
+    return {"message": "Meal Plan API is running properly."}
+
 
 @app.post("/generate_meal_plan")
 async def generate_meal_plan(
@@ -37,31 +43,41 @@ async def generate_meal_plan(
     activity_level: str = Form(...),
     gender: str = Form(...),
     goal: str = Form(...),
-    diabetes: bool = Form(...),
-    report: Optional[UploadFile] = File(None)
+    diabetes: str = Form(...),
+    report: Optional[UploadFile] = File(None),
 ):
-    # Save uploaded report file if provided
-    report_path = None
-    if report:
-        report_path = os.path.join(UPLOAD_DIR, report.filename)
-        with open(report_path, "wb") as buffer:
-            shutil.copyfileobj(report.file, buffer)
-
-    # Prepare input data for recommendation
-    input_data = {
-        "age": age,
-        "weight_kg": weight_kg,
-        "height_cm": height_cm,
-        "activity_level": activity_level,
-        "gender": gender,
-        "goal": goal,
-        "diabetes": diabetes,
-        "report_file": report_path,
-    }
-
     try:
-        # Generate meal plan
+        report_path = None
+
+        # ✅ Ensure upload folder exists
+        os.makedirs(UPLOAD_DIR, exist_ok=True)
+
+        # ✅ Save uploaded file (if provided)
+        if report:
+            filename = report.filename or "uploaded_report.txt"
+            report_path = os.path.join(UPLOAD_DIR, filename)
+
+            # Debug print (will show in terminal)
+            print(f"Saving file to: {report_path}")
+
+            with open(report_path, "wb") as buffer:
+                shutil.copyfileobj(report.file, buffer)
+
+        # ✅ Prepare data for recommendation
+        input_data = {
+            "age": age,
+            "weight_kg": weight_kg,
+            "height_cm": height_cm,
+            "activity_level": activity_level,
+            "gender": gender,
+            "goal": goal,
+            "diabetes": diabetes.lower() == "true",
+            "report_file": report_path,
+        }
+
         plan = generate_recommendations_for_user(input_data)
-        return JSONResponse(content=plan)
+        return plan
+
     except Exception as e:
-        return JSONResponse(content={"error": str(e)}, status_code=500)
+        print("❌ Error occurred:", e)
+        return {"error": str(e)}

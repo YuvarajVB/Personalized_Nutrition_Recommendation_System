@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Meal Plan Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      flex-direction: column;
+      padding: 20px;
+    }
+    form {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 30px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 15px;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 500px;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    tr.diabetic {
+      background-color: #ffebeb;
+    }
+    #result {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Smart Meal Plan Generator</h2>
+
+  <form id="mealForm" onsubmit="generateMealPlan(event)">
+    <label>Age:</label>
+    <input type="number" name="age" required>
+
+    <label>Weight (kg):</label>
+    <input type="number" name="weight_kg" required>
+
+    <label>Height (cm):</label>
+    <input type="number" name="height_cm" required>
+
+    <label>Activity Level:</label>
+    <select name="activity_level" required>
+      <option value="sedentary">Sedentary</option>
+      <option value="light">Light</option>
+      <option value="moderate">Moderate</option>
+      <option value="active">Active</option>
+      <option value="very_active">Very Active</option>
+    </select>
+
+    <label>Gender:</label>
+    <select name="gender" required>
+      <option value="M">Male</option>
+      <option value="F">Female</option>
+    </select>
+
+    <label>Goal:</label>
+    <select name="goal" required>
+      <option value="weight_loss">Weight Loss</option>
+      <option value="muscle_gain">Muscle Gain</option>
+      <option value="maintain">Maintain</option>
+    </select>
+
+    <label>Diabetes:</label>
+    <select name="diabetes" required>
+      <option value="true">Yes</option>
+      <option value="false">No</option>
+    </select>
+
+    <label>Upload Clinical Report (optional):</label>
+    <input type="file" name="report">
+
+    <button type="submit">Generate Meal Plan</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    async function generateMealPlan(event) {
+      event.preventDefault();
+      const form = event.target;
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch("http://127.0.0.1:8000/generate_meal_plan", {
+          method: "POST",
+          body: formData
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const plan = await response.json();
+
+        let html = `<h3>Total Calories: ${plan.calories}</h3>`;
+        html += `<h4>Macros (g): Protein: ${plan.macros.protein_g}, Carbs: ${plan.macros.carbs_g}, Fat: ${plan.macros.fat_g}</h4>`;
+        html += `<table><tr><th>Food</th><th>Category</th><th>Calories</th><th>Protein</th><th>Carbs</th><th>Fat</th></tr>`;
+
+        plan.meals.forEach(meal => {
+          const diabeticClass = meal.suitable_for === "diabetic" ? "diabetic" : "";
+          html += `<tr class="${diabeticClass}">
+            <td>${meal.food_name}</td>
+            <td>${meal.category}</td>
+            <td>${meal.calories}</td>
+            <td>${meal.protein}</td>
+            <td>${meal.g_carbs}</td>
+            <td>${meal.fat}</td>
+          </tr>`;
+        });
+
+        html += `</table>`;
+        document.getElementById("result").innerHTML = html;
+
+      } catch (error) {
+        document.getElementById("result").textContent = `❌ Error: ${error.message}`;
+        console.error("Fetch error:", error);
+      }
+    }
+  </script>
+</body>
+</html>
